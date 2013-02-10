@@ -12,7 +12,7 @@ $(function() {
 
 		var now = new Date;
 
-		return false; //now.getDay() === 6 || now.getDay() === 7;
+		return now.getDay() === 6 || now.getDay() === 7;
 
 	}
 
