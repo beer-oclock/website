@@ -12,7 +12,8 @@ $(function() {
 
 		var now = new Date;
 
-		return now.getDay() === 6 || now.getDay() === 7;
+		// Saturday = 6 and Sunday = 0
+		return now.getDay() === 6 || now.getDay() === 0;
 
 	}
 
@@ -76,7 +77,7 @@ $(function() {
 		var now = new Date / 1000,
 			beer = get_beer_o_clock() / 1000;
 
-		return GLASS_FULL - (((beer - now) / 86400) * 100);
+		return parseInt(GLASS_FULL - (((beer - now) / 86400) * 100));
 
 	}
 
