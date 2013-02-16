@@ -1,6 +1,6 @@
 $(function() {
 
-	const BEER_O_CLOCK = 17; // 5 PM
+	const BEER_O_CLOCK = 20; // 5 PM
 	const GLASS_FULL = 100;
 
 	var $hours = $("#hours"),
@@ -14,6 +14,13 @@ $(function() {
 
 		// Saturday = 6 and Sunday = 0
 		return now.getDay() === 6 || now.getDay() === 0;
+
+	}
+
+	// Is it beer o'clock? i.e the weekend or after beer o'clock on the current day
+	function is_beer_o_clock() {
+
+		return is_weekend() || (new Date).getHours() >= BEER_O_CLOCK;
 
 	}
 
@@ -41,7 +48,7 @@ $(function() {
 		var beer_o_clock = new Date;
 
 		// If it's already past beer o'clock then we need to wait till tomorrow
-		if (beer_o_clock.getHours() > BEER_O_CLOCK) {
+		if (beer_o_clock.getHours() >= BEER_O_CLOCK) {
 
 			beer_o_clock.setDate(beer_o_clock.getDate() + 1);
 
@@ -59,7 +66,7 @@ $(function() {
 	function time_till_beer() {
 
 		var beer_o_clock = get_beer_o_clock(),
-			now = is_weekend() ? get_beer_o_clock() : new Date; 
+			now = is_beer_o_clock() ? beer_o_clock : new Date;
 
 		return new Date(beer_o_clock - now);
 
@@ -68,7 +75,7 @@ $(function() {
 	// How full should the beer glass be?
 	function time_till_beer_percentage() {
 
-		if (is_weekend()) {
+		if (is_beer_o_clock()) {
 
 			return GLASS_FULL;
 
@@ -81,21 +88,14 @@ $(function() {
 
 	}
 
-	// Update the page time html
-	function set_time(date) {
+	function update_clock() {
 
-		var time = format_time(date);
+		// Update the page content
+		var time = format_time(time_till_beer());
 
 		$hours.text(time.hours);
 		$minutes.text(time.minutes);
 		$seconds.text(time.seconds);
-
-	}
-
-	function update_clock() {
-
-		// Update the page content
-		set_time(time_till_beer());
 
 		// Fill up that beer glass!
 		$("#beer").css({
