@@ -1,11 +1,18 @@
 $(function() {
 
-	const BEER_O_CLOCK = 5; // 5 PM
+	var BEER_O_CLOCK = 17; // 5 PM
 	const GLASS_FULL = 100;
 
 	var $hours = $("#hours"),
 		$minutes = $("#minutes"),
 		$seconds = $("#seconds");
+
+	// Allow overriding of beer o'clock for debug
+	window.set_beer_o_clock = function(hour) {
+
+		return BEER_O_CLOCK = hour;
+
+	}
 
 	// Is it the weekend? If so it's always beer o'clock!
 	function is_weekend() {
