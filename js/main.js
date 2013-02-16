@@ -1,6 +1,6 @@
 $(function() {
 
-	const BEER_O_CLOCK = 20; // 5 PM
+	const BEER_O_CLOCK = 5; // 5 PM
 	const GLASS_FULL = 100;
 
 	var $hours = $("#hours"),
@@ -13,7 +13,7 @@ $(function() {
 		var now = new Date;
 
 		// Saturday = 6 and Sunday = 0
-		return now.getDay() === 6 || now.getDay() === 0;
+		return false; //now.getDay() === 6 || now.getDay() === 0;
 
 	}
 
@@ -88,14 +88,43 @@ $(function() {
 
 	}
 
-	function update_clock() {
+	function update() {
 
 		// Update the page content
-		var time = format_time(time_till_beer());
+		var time = time_till_beer();
+		var pretty_time = format_time(time);
 
-		$hours.text(time.hours);
-		$minutes.text(time.minutes);
-		$seconds.text(time.seconds);
+		$hours.text(pretty_time.hours);
+		$minutes.text(pretty_time.minutes);
+		$seconds.text(pretty_time.seconds);
+
+		// Update the title
+		if (is_beer_o_clock()) {
+
+			document.title = "It's Beer o'clock now!";
+
+		} else {
+
+			var hours_suffix = time.getHours() === 1 ? " hour " : " hours ",
+				minutes_suffix = time.getMinutes() === 1 ? " minute " : " minutes ",
+				seconds_suffix = time.getSeconds() === 1 ? " second" : " seconds",
+				time_string = "";
+
+			if (time.getHours() > 0) {
+
+				time_string += time.getHours() + hours_suffix;
+
+			}
+
+			if (time.getMinutes() > 0) {
+
+				time_string += time.getMinutes() + minutes_suffix;
+
+			}
+
+			document.title = time_string + time.getSeconds() + seconds_suffix;
+
+		}
 
 		// Fill up that beer glass!
 		$("#beer").css({
@@ -106,7 +135,7 @@ $(function() {
 	}
 
 	// Update the clock
-	update_clock();
-	setInterval(update_clock, 1000);
+	update();
+	setInterval(update, 1000);
 
 });
