@@ -20,7 +20,7 @@ $(function() {
 		var now = new Date;
 
 		// Saturday = 6 and Sunday = 0
-		return false; //now.getDay() === 6 || now.getDay() === 0;
+		return now.getDay() === 6 || now.getDay() === 0;
 
 	}
 
