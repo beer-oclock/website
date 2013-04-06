@@ -3,16 +3,32 @@ $(function() {
 	var BEER_O_CLOCK = 17; // 5 PM
 	const GLASS_FULL = 100;
 
-	var $hours = $(".countdown-hours > .digit"),
+	var index
+		full_query_string = window.location.href.split("?")[1],
+		$hours = $(".countdown-hours > .digit"),
 		$minutes = $(".countdown-minutes > .digit"),
 		$seconds = $(".countdown-seconds > .digit");
 
-		console.log($hours);
+	// Split it up into key value pairs
+	full_query_string = typeof full_query_string == "undefined" ? [] : full_query_string.split("&");
+
+	// Loop through the query string and set up an object based on it
+	query_string = {};
+	
+	for (index in full_query_string) {
+
+		// Split up the key value pair
+		item = full_query_string[index].split("=");
+
+		// Add it to our object
+		query_string[item[0]] = item[1];
+
+	}
 
 	// Allow overriding of beer o'clock for debug
-	window.set_beer_o_clock = function(hour) {
+	if (typeof query_string.t != "undefined") {
 
-		return BEER_O_CLOCK = hour;
+		BEER_O_CLOCK = query_string.t;
 
 	}
 
