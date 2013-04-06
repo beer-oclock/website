@@ -34,9 +34,7 @@ $(function() {
 
 	// Is it the weekend? If so it's always beer o'clock!
 	function is_weekend() {
-
-		return false;
-
+		
 		var now = new Date;
 
 		// Saturday = 6 and Sunday = 0
