@@ -34,7 +34,9 @@ $(function() {
 
 	// Is it the weekend? If so it's always beer o'clock!
 	function is_weekend() {
-		
+
+		return false;
+
 		var now = new Date;
 
 		// Saturday = 6 and Sunday = 0
@@ -151,24 +153,24 @@ $(function() {
 
 		} else {
 
-			var hours_suffix = time.getHours() === 1 ? " hour " : " hours ",
-				minutes_suffix = time.getMinutes() === 1 ? " minute " : " minutes ",
-				seconds_suffix = time.getSeconds() === 1 ? " second" : " seconds",
-				time_string = "";
+			var time_string = "";
 
 			if (time.getHours() > 0) {
 
-				time_string += time.getHours() + hours_suffix;
+				time_string += time.getHours() + "h ";
 
 			}
 
 			if (time.getMinutes() > 0) {
 
-				time_string += time.getMinutes() + minutes_suffix;
+				time_string += time.getMinutes() + "m ";
 
 			}
 
-			document.title = time_string + time.getSeconds() + seconds_suffix;
+			time_string += time.getSeconds() + "s ";
+
+			document.title = time_string;
+			window.location.hash = time_string;
 
 		}
 
