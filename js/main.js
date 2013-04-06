@@ -1,6 +1,6 @@
 $(function() {
 
-	var BEER_O_CLOCK = 24; // 5 PM
+	var BEER_O_CLOCK = 17; // 5 PM
 	const GLASS_FULL = 100;
 
 	var $hours = $(".countdown-hours > .digit"),
