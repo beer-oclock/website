@@ -2,38 +2,79 @@
 <html>
 <head>
 	<!-- Download CSS asap -->
-	<!-- <link type="text/css" href="css/main.css" rel="stylesheet"/> -->
-	<link href="//fonts.googleapis.com/css?family=Montserrat:700" rel="stylesheet" type="text/css"/>
-	<link type="text/less" href="less/main.less" rel="stylesheet/less"/>
+	<link type="text/css" href="css/main.css" rel="stylesheet"/>
 
-	<!-- Temporarily using this while in development -->
-	<script src="js/less.js" type="text/javascript"></script>
+	<!-- Typekit -->
+	<script type="text/javascript" src="//use.typekit.net/kdh0ouh.js"></script>
+	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 	<title>Beer o'clock</title>
 </head>
 
 <body>
 
-	<div id="glass">
-		<div id="beer"></div>
+	<div class="site-container">
+		<div class="main-content">
+			
+			<div class="content-column opening-content">
+				<header class="site-header">
+					<h1>Beer<br/>O'clock</h1>
+					<p>How long until the most important time of day?</p>
+				</header>
+			</div>
+		
+			<!-- Here's our drink -->
+			<div class="drink-container uk-pint">
+				<div class="drink-glass">
+					<div class="glass-overlay"></div>
+				</div>
+				<div class="liquid-content">
+					<div class="tasty-beverage">
+						<div class="beverage-head"></div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="content-column extra-content">
+				<section class="countdown-timer">
+					<h2>Time until Beer O'clock</h2>
+					<div class="countdown-container">
+						<!-- <div class="countdown-segment countdown-days">
+							<h3 class="countdown-label">Days</h3>
+							<div class="digit">3</div>
+						</div> -->
+						<div class="countdown-segment countdown-hours">
+							<h3 class="countdown-label">Hours</h3>
+							<div class="digit">1</div>
+							<div class="digit">3</div>
+						</div>
+						<div class="countdown-segment countdown-minutes">
+							<h3 class="countdown-label">Minutes</h3>
+							<div class="digit">4</div>
+							<div class="digit">2</div>
+						</div>
+						<div class="countdown-segment countdown-seconds">
+							<h3 class="countdown-label">Seconds</h3>
+							<div class="digit">1</div>
+							<div class="digit">4</div>
+						</div>
+					</div>
+					
+					<!--
+					<div class="beer-oclock-notification">
+						It's Beer O'clock!
+					</div>
+					-->
+				</section>
+			</div>
+			
+		</div>
 	</div>
-
-	<div id="time">
-		<ul id="hours">
-			<li></li>
-			<li></li>
-		</ul>
-		:
-		<ul id="minutes">
-			<li></li>
-			<li></li>
-		</ul>
-		:
-		<ul id="seconds">
-			<li></li>
-			<li></li>
-		</ul>
-	</div>
+	
+	<footer class="site-footer">
+		<a href="#" class="site-customise" title="Pour your own pint!">Customise</a>
+		<small class="site-credits">Brewed by <a href="http://twitter.com/jamesrwhite">James White</a> &amp; <a href="http://twitter.com/benhodgson">Ben Hodgson</a></small>
+	</footer>
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<script src="js/main.js"></script>

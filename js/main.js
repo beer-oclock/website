@@ -1,11 +1,13 @@
 $(function() {
 
-	var BEER_O_CLOCK = 17; // 5 PM
+	var BEER_O_CLOCK = 24; // 5 PM
 	const GLASS_FULL = 100;
 
-	var $hours = $("#hours"),
-		$minutes = $("#minutes"),
-		$seconds = $("#seconds");
+	var $hours = $(".countdown-hours > .digit"),
+		$minutes = $(".countdown-minutes > .digit"),
+		$seconds = $(".countdown-seconds > .digit");
+
+		console.log($hours);
 
 	// Allow overriding of beer o'clock for debug
 	window.set_beer_o_clock = function(hour) {
@@ -16,6 +18,8 @@ $(function() {
 
 	// Is it the weekend? If so it's always beer o'clock!
 	function is_weekend() {
+
+		return false;
 
 		var now = new Date;
 
@@ -41,10 +45,14 @@ $(function() {
 	// Format a Date object a bit more nicely
 	function format_time(date) {
 
+		var hours = leading_zero(date.getHours()),
+			minutes = leading_zero(date.getMinutes()),
+			seconds = leading_zero(date.getSeconds());
+
 		return {
-			hours: leading_zero(date.getHours()),
-			minutes: leading_zero(date.getMinutes()),
-			seconds: leading_zero(date.getSeconds())
+			hours: hours.toString().split(""),
+			minutes: minutes.toString().split(""),
+			seconds: seconds.toString().split("")
 		};
 
 	}
@@ -101,9 +109,26 @@ $(function() {
 		var time = time_till_beer();
 		var pretty_time = format_time(time);
 
-		$hours.text(pretty_time.hours);
-		$minutes.text(pretty_time.minutes);
-		$seconds.text(pretty_time.seconds);
+		// Update the hours display
+		$.each($hours, function(index, value) {
+			
+			$hours[index].innerHTML = pretty_time.hours[index];
+
+		});
+
+		// Update the minutes display
+		$.each($minutes, function(index, value) {
+			
+			$minutes[index].innerHTML = pretty_time.minutes[index];
+
+		});
+
+		// Update the seconds display
+		$.each($seconds, function(index, value) {
+			
+			$seconds[index].innerHTML = pretty_time.seconds[index];
+
+		});
 
 		// Update the title
 		if (is_beer_o_clock()) {
@@ -134,9 +159,8 @@ $(function() {
 		}
 
 		// Fill up that beer glass!
-		$("#beer").css({
-			height: time_till_beer_percentage() + "%",
-			top: (GLASS_FULL - time_till_beer_percentage()) + "%"
+		$(".tasty-beverage").css({
+			height: time_till_beer_percentage() + "%"
 		});
 
 	}
