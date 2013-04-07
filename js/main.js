@@ -181,57 +181,63 @@ $(function() {
 
     }
     
-    function professorBurpsBubbleWorks() {
-        
-        var minBubbleCount = 25, // Minimum number of bubbles
-            maxBubbleCount = 75, // Maximum number of bubbles
-            minBubbleSize = 1, // Smallest possible bubble diameter (px)
-            maxBubbleSize = 6; // Largest possible bubble diameter (px)
-        
-        // Generate our bubbles from the above options
-        var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
-        
-        for (var i = 0; i < bubbleCount; i++) {
-            $('.bubbles').append('<div class="bubble-container"><div class="bubble"></div></div>');
-        }
+	function professorburpsbubbleworks() {
+	    
+		var minBubbleCount = parseFloat($('.bubbles').attr('data-bubble-min-count')); // Minimum number of bubbles
+		var maxBubbleCount = parseFloat($('.bubbles').attr('data-bubble-max-count')); // Maximum number of bubbles
+    	
+		var minBubbleSize = parseFloat($('.bubbles').attr('data-bubble-min-size')); // Smallest possible bubble diameter (px)
+		var maxBubbleSize = parseFloat($('.bubbles').attr('data-bubble-max-size')); // Largest possible bubble diameter (px)
+    	
+    	
+		// Generate our bubbles from the above options
+		var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
+		
+		for(var i = 0; i < bubbleCount; i++) {
+			$('.bubbles').append('<div class="bubble-container"><div class="bubble"></div></div>');
+		}
 
-        // Make each bubble random
-        $('.bubbles > .bubble-container').each(function() {
-            // Randomise their size
-            var sizeRand = minBubbleSize + Math.floor(Math.random() * (maxBubbleSize + 1));
-            
-            // Randomly position the bubbles
-            var posRand = Math.floor(Math.random() * 101);
-            
-            // Randomise the time they start rising
-            var delayRand = Math.floor(Math.random() * 16);
-            
-            // Randomise their speed
-            var speedRand = 3 + Math.floor(Math.random() * 9);
-
-            // Cache the this selector
-            var $this = $(this);
-            
-            // Stick the above to the bubble container
-            $this.css({
-                left: posRand + '%',
-                'animation-duration': speedRand + 's',
-                'animation-delay': delayRand + 's'
-            });
-            
-            // And to the bubble itself
-            $this.children('.bubble').css({
-                width: sizeRand + 'px',
-                height: sizeRand + 'px'
-            });
-        });
+		// Make each bubble random
+		$('.bubbles > .bubble-container').each(function(){
+			// Randomise their size
+			var sizeRand = minBubbleSize + Math.floor(Math.random() * (maxBubbleSize + 1));
+			
+			// Randomly position the bubbles
+			var posRand = Math.floor(Math.random() * 101);
+			
+			// Randomise the time they start rising
+			var delayRand = Math.floor(Math.random() * 16);
+			
+			// Randomise their speed
+			var speedRand = 3 + Math.floor(Math.random() * 9);
+			
+			// Stick the above to the bubble container
+			$(this).css('left', posRand + '%');
+			
+			// I hate browser prefixes.
+			$(this).css('-webkit-animation-duration', speedRand + 's');
+			$(this).css('-moz-animation-duration', speedRand + 's');
+			$(this).css('-ms-animation-duration', speedRand + 's');
+			$(this).css('animation-duration', speedRand + 's');
+			
+			$(this).css('-webkit-animation-delay', delayRand + 's');
+			$(this).css('-moz-animation-delay', delayRand + 's');
+			$(this).css('-ms-animation-delay', delayRand + 's');
+			$(this).css('animation-delay', delayRand + 's');
+			
+			// And to the bubble itself
+			$(this).children('.bubble').css('width', sizeRand + 'px');
+			$(this).children('.bubble').css('height', sizeRand + 'px');
+		});
+	}
+	
+	// Activate the bubble cannon
+    if ($('.bubbles').attr('data-bubbles') == 'true') {
+    	professorburpsbubbleworks();
     }
-
+    
     // Update the clock
     update();
     setInterval(update, 1000);
-    
-    // Start the bubble cannon
-    professorBurpsBubbleWorks();
 
 });
