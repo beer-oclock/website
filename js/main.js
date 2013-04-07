@@ -4,13 +4,13 @@ $(function() {
     const GLASS_FULL = 100;
 
     var index
-        full_query_string = window.location.href.split("?")[1],
-        $hours = $(".countdown-hours > .digit"),
-        $minutes = $(".countdown-minutes > .digit"),
-        $seconds = $(".countdown-seconds > .digit");
+        full_query_string = window.location.href.split('?')[1],
+        $hours = $('.countdown-hours > .digit'),
+        $minutes = $('.countdown-minutes > .digit'),
+        $seconds = $('.countdown-seconds > .digit');
 
     // Split it up into key value pairs
-    full_query_string = typeof full_query_string == "undefined" ? [] : full_query_string.split("&");
+    full_query_string = typeof full_query_string == 'undefined' ? [] : full_query_string.split('&');
 
     // Loop through the query string and set up an object based on it
     query_string = {};
@@ -18,7 +18,7 @@ $(function() {
     for (index in full_query_string) {
 
         // Split up the key value pair
-        item = full_query_string[index].split("=");
+        item = full_query_string[index].split('=');
 
         // Add it to our object
         query_string[item[0]] = item[1];
@@ -26,7 +26,7 @@ $(function() {
     }
 
     // Allow overriding of beer o'clock for debug
-    if (typeof query_string.t != "undefined") {
+    if (typeof query_string.t != 'undefined') {
 
         BEER_O_CLOCK = query_string.t;
 
@@ -54,7 +54,7 @@ $(function() {
     // Add leading zeros to numbers
     function leading_zero(number) {
 
-        return number < 10 ? "0" + number : number;
+        return number < 10 ? '0' + number : number;
 
     }
 
@@ -66,9 +66,9 @@ $(function() {
             seconds = leading_zero(date.getSeconds());
 
         return {
-            hours: hours.toString().split(""),
-            minutes: minutes.toString().split(""),
-            seconds: seconds.toString().split("")
+            hours: hours.toString().split(''),
+            minutes: minutes.toString().split(''),
+            seconds: seconds.toString().split('')
         };
 
     }
@@ -153,21 +153,21 @@ $(function() {
 
         } else {
 
-            var time_string = "";
+            var time_string = '';
 
             if (time.getHours() > 0) {
 
-                time_string += time.getHours() + "h ";
+                time_string += time.getHours() + 'h ';
 
             }
 
             if (time.getMinutes() > 0) {
 
-                time_string += time.getMinutes() + "m ";
+                time_string += time.getMinutes() + 'm ';
 
             }
 
-            time_string += time.getSeconds() + "s ";
+            time_string += time.getSeconds() + 's ';
 
             document.title = time_string;
             window.location.hash = time_string;
@@ -176,57 +176,62 @@ $(function() {
 
         // Fill up that beer glass!
         $(".tasty-beverage").css({
-            height: time_till_beer_percentage() + "%"
+            height: time_till_beer_percentage() + '%'
         });
 
     }
     
-	function professorburpsbubbleworks() {
-    	
-		var minBubbleCount = 25; // Minimum number of bubbles
-		var maxBubbleCount = 75; // Maximum number of bubbles
-    	
-		var minBubbleSize = 1; // Smallest possible bubble diameter (px)
-		var maxBubbleSize = 6; // Largest possible bubble diameter (px)
-    	
-    	
-		// Generate our bubbles from the above options
-		var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
-		
-		for(var i = 0; i < bubbleCount; i++) {
-			$('.bubbles').append('<div class="bubble-container"><div class="bubble"></div></div>');
-		}
+    function professorBurpsBubbleWorks() {
+        
+        var minBubbleCount = 25, // Minimum number of bubbles
+            maxBubbleCount = 75, // Maximum number of bubbles
+            minBubbleSize = 1, // Smallest possible bubble diameter (px)
+            maxBubbleSize = 6; // Largest possible bubble diameter (px)
+        
+        // Generate our bubbles from the above options
+        var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
+        
+        for (var i = 0; i < bubbleCount; i++) {
+            $('.bubbles').append('<div class="bubble-container"><div class="bubble"></div></div>');
+        }
 
-		// Make each bubble random
-		$('.bubbles > .bubble-container').each(function(){
-			// Randomise their size
-			var sizeRand = minBubbleSize + Math.floor(Math.random() * (maxBubbleSize + 1));
-			
-			// Randomly position the bubbles
-			var posRand = Math.floor(Math.random() * 101);
-			
-			// Randomise the time they start rising
-			var delayRand = Math.floor(Math.random() * 16);
-			
-			// Randomise their speed
-			var speedRand = 3 + Math.floor(Math.random() * 9);
-			
-			// Stick the above to the bubble container
-			$(this).css('left', posRand + '%');
-			$(this).css('animation-duration', speedRand + 's');
-			$(this).css('animation-delay', delayRand + 's');
-			
-			// And to the bubble itself
-			$(this).children('.bubble').css('width', sizeRand + 'px');
-			$(this).children('.bubble').css('height', sizeRand + 'px');
-		});
-	}
+        // Make each bubble random
+        $('.bubbles > .bubble-container').each(function() {
+            // Randomise their size
+            var sizeRand = minBubbleSize + Math.floor(Math.random() * (maxBubbleSize + 1));
+            
+            // Randomly position the bubbles
+            var posRand = Math.floor(Math.random() * 101);
+            
+            // Randomise the time they start rising
+            var delayRand = Math.floor(Math.random() * 16);
+            
+            // Randomise their speed
+            var speedRand = 3 + Math.floor(Math.random() * 9);
+
+            // Cache the this selector
+            var $this = $(this);
+            
+            // Stick the above to the bubble container
+            $this.css({
+                left: posRand + '%',
+                'animation-duration': speedRand + 's',
+                'animation-delay': delayRand + 's'
+            });
+            
+            // And to the bubble itself
+            $this.children('.bubble').css({
+                width: sizeRand + 'px',
+                height: sizeRand + 'px'
+            });
+        });
+    }
 
     // Update the clock
     update();
     setInterval(update, 1000);
     
     // Start the bubble cannon
-    professorburpsbubbleworks();
+    professorBurpsBubbleWorks();
 
 });
