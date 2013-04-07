@@ -42,10 +42,7 @@ body:before {
   vertical-align: middle;
   padding-bottom: 35px;
 }
-<<<<<<< HEAD
-=======
-    
->>>>>>> Browser Prefixes + Bubble Improvements
+
 
 /* Site Header */
 
@@ -72,10 +69,7 @@ body:before {
   color: #666;
   text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
-<<<<<<< HEAD
-=======
-    
->>>>>>> Browser Prefixes + Bubble Improvements
+
 
 /* Countdown Timer */
 
@@ -158,6 +152,7 @@ body:before {
       -ms-animation: alertflash 2s infinite;
           animation: alertflash 2s infinite;
 }
+
 
 /* Site Footer */
 
@@ -253,19 +248,13 @@ body:before {
   position: absolute;
   bottom: 0;
   width: 100%;
-<<<<<<< HEAD
+
   min-height: 1%;
-  max-height: 495px;
-  
-  -webkit-border-radius: 149px 20px;
-=======
-  min-height: 10%;
   max-height: 495px;
   
   -webkit-border-radius: 149px / 20px;
      -moz-border-radius: 149px / 20px;
           border-radius: 149px / 20px;
->>>>>>> Browser Prefixes + Bubble Improvements
   
   -webkit-transition: all 3s ease-in-out;
      -moz-transition: all 3s ease-in-out;
@@ -281,13 +270,9 @@ body:before {
   width: 100%;
   height: 12.5%;
   
-<<<<<<< HEAD
-  -webkit-border-radius: 149px 20px;
-=======
   -webkit-border-radius: 149px / 20px;
      -moz-border-radius: 149px / 20px;
           border-radius: 149px / 20px;
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 
 
@@ -296,15 +281,6 @@ body:before {
 /* Lager */
 .drink-lager .tasty-beverage {
   background: #c48135;
-<<<<<<< HEAD
-  background: -moz-linear-gradient(left, #c48135 0%, #c69b45 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #c48135), color-stop(100%, #c69b45));
-  background: -webkit-linear-gradient(left, #c48135 0%, #c69b45 100%);
-  background: -o-linear-gradient(left, #c48135 0%, #c69b45 100%);
-  background: -ms-linear-gradient(left, #c48135 0%, #c69b45 100%);
-  background: linear-gradient(to right, #c48135 0%, #c69b45 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#c48135', endColorstr='#c69b45',GradientType=1);
-=======
   background: -moz-linear-gradient(left,  #c48135 0%, #c69b45 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c48135), color-stop(100%,#c69b45));
   background: -webkit-linear-gradient(left,  #c48135 0%,#c69b45 100%);
@@ -312,7 +288,6 @@ body:before {
   background: -ms-linear-gradient(left,  #c48135 0%,#c69b45 100%);
   background: linear-gradient(to right,  #c48135 0%,#c69b45 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c48135', endColorstr='#c69b45',GradientType=1 );
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 
 .drink-lager .beverage-head {
@@ -322,15 +297,6 @@ body:before {
 /* Ale */
 .drink-ale .tasty-beverage {
   background: #71200b;
-<<<<<<< HEAD
-  background: -moz-linear-gradient(left, #71200b 0%, #77380b 100%);
-  background: -webkit-gradient(linear, left top, right top, color-stop(0%, #71200b), color-stop(100%, #77380b));
-  background: -webkit-linear-gradient(left, #71200b 0%, #77380b 100%);
-  background: -o-linear-gradient(left, #71200b 0%, #77380b 100%);
-  background: -ms-linear-gradient(left, #71200b 0%, #77380b 100%);
-  background: linear-gradient(to right, #71200b 0%, #77380b 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#71200b', endColorstr='#77380b',GradientType=1);
-=======
   background: -moz-linear-gradient(left,  #71200b 0%, #77380b 100%);
   background: -webkit-gradient(linear, left top, right top, color-stop(0%,#71200b), color-stop(100%,#77380b));
   background: -webkit-linear-gradient(left,  #71200b 0%,#77380b 100%);
@@ -338,34 +304,16 @@ body:before {
   background: -ms-linear-gradient(left,  #71200b 0%,#77380b 100%);
   background: linear-gradient(to right,  #71200b 0%,#77380b 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#71200b', endColorstr='#77380b',GradientType=1 );
->>>>>>> Browser Prefixes + Bubble Improvements
-
 }
 
 .drink-ale .beverage-head {
   height: 15%;
   background: #f3ebe1;
-<<<<<<< HEAD
-}
-
-.drink-ale .bubbles {
-  display: none;
-=======
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 
 /* Guinness */
 .drink-stout .tasty-beverage {
   background: #605a4f;
-<<<<<<< HEAD
-  background: -moz-linear-gradient(top, #605a4f 0%, #231905 33%, #231905 100%);
-  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #605a4f), color-stop(33%, #231905), color-stop(100%, #231905));
-  background: -webkit-linear-gradient(top, #605a4f 0%, #231905 33%, #231905 100%);
-  background: -o-linear-gradient(top, #605a4f 0%, #231905 33%, #231905 100%);
-  background: -ms-linear-gradient(top, #605a4f 0%, #231905 33%, #231905 100%);
-  background: linear-gradient(to bottom, #605a4f 0%, #231905 33%, #231905 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#605a4f', endColorstr='#231905',GradientType=0);
-=======
   background: -moz-linear-gradient(top,  #605a4f 0%, #231905 33%, #231905 100%);
   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#605a4f), color-stop(33%,#231905), color-stop(100%,#231905));
   background: -webkit-linear-gradient(top,  #605a4f 0%,#231905 33%,#231905 100%);
@@ -373,18 +321,10 @@ body:before {
   background: -ms-linear-gradient(top,  #605a4f 0%,#231905 33%,#231905 100%);
   background: linear-gradient(to bottom,  #605a4f 0%,#231905 33%,#231905 100%);
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#605a4f', endColorstr='#231905',GradientType=0 );
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 
 .drink-stout .beverage-head {
   background: #eee3da;
-<<<<<<< HEAD
-}
-
-.drink-stout .bubbles {
-  display: none;
-=======
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 
 /* Bubbles */
@@ -404,13 +344,8 @@ body:before {
   
   -webkit-animation: bubblerise 4s infinite ease-in;
      -moz-animation: bubblerise 4s infinite ease-in;
-<<<<<<< HEAD
-        -ms-animation: bubblerise 4s infinite ease-in;
-            animation: bubblerise 4s infinite ease-in;
-=======
       -ms-animation: bubblerise 4s infinite ease-in;
           animation: bubblerise 4s infinite ease-in;
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 
 .bubble {
@@ -420,15 +355,6 @@ body:before {
   margin: 0 auto;
   border: 1px solid rgba(255,255,255,0.15);
   background: rgba(255,255,255,0.05);
-<<<<<<< HEAD
-  border-radius: 10px;
-  
-  -webkit-animation: bubblewobble 0.4s infinite linear;
-     -moz-animation: bubblewobble 0.4s infinite linear;
-        -ms-animation: bubblewobble 0.4s infinite linear;
-            animation: bubblewobble 0.4s infinite linear;
-}
-=======
   
   -webkit-border-radius: 10px;
      -moz-border-radius: 10px;
@@ -440,7 +366,6 @@ body:before {
           animation: bubblewobble 0.4s infinite linear;
 }
       
->>>>>>> Browser Prefixes + Bubble Improvements
 
 /*
 Animation Stuff
@@ -451,17 +376,6 @@ Animation Stuff
 @-webkit-keyframes bubblerise {
   0% {
     opacity: 0;
-<<<<<<< HEAD
-  }
-  1% {
-    opacity: 1;
-    bottom: 20px;
-  }
-  100% {
-    opacity: 1;
-    bottom: 100%;
-  }
-=======
     bottom: 20px;
   }
   5% {
@@ -475,22 +389,10 @@ Animation Stuff
   100% {
     opacity: 0;
   }
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 @-moz-keyframes bubblerise {
   0% {
     opacity: 0;
-<<<<<<< HEAD
-  }
-  1% {
-    opacity: 1;
-    bottom: 20px;
-  }
-  100% {
-    opacity: 1;
-    bottom: 100%;
-  }
-=======
     bottom: 20px;
   }
   5% {
@@ -504,22 +406,10 @@ Animation Stuff
   100% {
     opacity: 0;
   }
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 @-ms-keyframes bubblerise {
   0% {
     opacity: 0;
-<<<<<<< HEAD
-  }
-  1% {
-    opacity: 1;
-    bottom: 20px;
-  }
-  100% {
-    opacity: 1;
-    bottom: 100%;
-  }
-=======
     bottom: 20px;
   }
   5% {
@@ -533,22 +423,10 @@ Animation Stuff
   100% {
     opacity: 0;
   }
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 @keyframes bubblerise {
   0% {
     opacity: 0;
-<<<<<<< HEAD
-  }
-  1% {
-    opacity: 1;
-    bottom: 20px;
-  }
-  100% {
-    opacity: 1;
-    bottom: 100%;
-  }
-=======
     bottom: 20px;
   }
   5% {
@@ -562,7 +440,6 @@ Animation Stuff
   100% {
     opacity: 0;
   }
->>>>>>> Browser Prefixes + Bubble Improvements
 }
 
 @-webkit-keyframes bubblewobble {
