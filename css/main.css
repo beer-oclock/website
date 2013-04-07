@@ -241,15 +241,14 @@ body:before {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	min-height: 10%;
 	max-height: 495px;
 	background: #c89632;
 
-	-webkit-transition: all 3s ease-in-out;
-		 -moz-transition: all 3s ease-in-out;
-			-ms-transition: all 3s ease-in-out;
-			 -o-transition: all 3s ease-in-out;
-					transition: all 3s ease-in-out;
+	-webkit-transition: all 2.5s ease-in-out;
+		 -moz-transition: all 2.5s ease-in-out;
+			-ms-transition: all 2.5s ease-in-out;
+			 -o-transition: all 2.5s ease-in-out;
+					transition: all 2.5s ease-in-out;
 	
 	-webkit-border-radius: 149px 20px;
 }
