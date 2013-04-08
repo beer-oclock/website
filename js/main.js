@@ -212,25 +212,28 @@ $(function() {
 			var speedRand = 3 + Math.floor(Math.random() * 9);
 			
 			// Stick the above to the bubble container
-			$(this).css('left', posRand + '%');
+			$(this).css({
+				'left' : posRand + '%',
+				
+				'-webkit-animation-duration' : speedRand + 's',
+				'-moz-animation-duration' : speedRand + 's',
+				'-ms-animation-duration' : speedRand + 's',
+				'animation-duration' : speedRand + 's',
+				
+				'-webkit-animation-delay' : delayRand + 's',
+				'-moz-animation-delay' : delayRand + 's',
+				'-ms-animation-delay' : delayRand + 's',
+				'animation-delay' : delayRand + 's'
+			});
 			
-			// I hate browser prefixes.
-			$(this).css('-webkit-animation-duration', speedRand + 's');
-			$(this).css('-moz-animation-duration', speedRand + 's');
-			$(this).css('-ms-animation-duration', speedRand + 's');
-			$(this).css('animation-duration', speedRand + 's');
-			
-			$(this).css('-webkit-animation-delay', delayRand + 's');
-			$(this).css('-moz-animation-delay', delayRand + 's');
-			$(this).css('-ms-animation-delay', delayRand + 's');
-			$(this).css('animation-delay', delayRand + 's');
-			
-			// And to the bubble itself
-			$(this).children('.bubble').css('width', sizeRand + 'px');
-			$(this).children('.bubble').css('height', sizeRand + 'px');
+			// And set the bubble size
+			$(this).children('.bubble').css({
+				'width' : sizeRand + 'px',
+				'height' : sizeRand + 'px'
+			});
 		});
 	}
-	
+		
 	// Activate the bubble cannon
     if ($('.bubbles').attr('data-bubbles') == 'true') {
     	professorburpsbubbleworks();
