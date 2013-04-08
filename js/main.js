@@ -57,7 +57,8 @@ $(document).ready(function() {
     var BEER_O_CLOCK = 17; // 5 PM
     const GLASS_FULL = 100;
 
-    var index
+    var beer = {},
+        inde,
         full_query_string = window.location.href.split('?')[1],
         $hours = $('.countdown-hours > .digit'),
         $minutes = $('.countdown-minutes > .digit'),
@@ -87,37 +88,35 @@ $(document).ready(function() {
     }
 
     // Is it the weekend? If so it's always beer o'clock!
-    function is_weekend() {
-
-        return false;
+    beer.is_weekend = function() {
 
         var now = new Date;
 
         // Saturday = 6 and Sunday = 0
         return now.getDay() === 6 || now.getDay() === 0;
 
-    }
+    };
 
     // Is it beer o'clock? i.e the weekend or after beer o'clock on the current day
-    function is_beer_o_clock() {
+    beer.can_haz = function() {
 
-        return is_weekend() || (new Date).getHours() >= BEER_O_CLOCK;
+        return this.is_weekend() || (new Date).getHours() >= BEER_O_CLOCK;
 
-    }
+    };
 
     // Add leading zeros to numbers
-    function leading_zero(number) {
+    beer.leading_zero = function(number) {
 
         return number < 10 ? '0' + number : number;
 
-    }
+    };
 
     // Format a Date object a bit more nicely
-    function format_time(date) {
+    beer.format_time = function(date) {
 
-        var hours = leading_zero(date.getHours()),
-            minutes = leading_zero(date.getMinutes()),
-            seconds = leading_zero(date.getSeconds());
+        var hours = this.leading_zero(date.getHours()),
+            minutes = this.leading_zero(date.getMinutes()),
+            seconds = this.leading_zero(date.getSeconds());
 
         return {
             hours: hours.toString().split(''),
@@ -125,10 +124,10 @@ $(document).ready(function() {
             seconds: seconds.toString().split('')
         };
 
-    }
+    };
 
     // A Date object for when beer o'clock is
-    function get_beer_o_clock() {
+    beer.get_date = function() {
 
         var beer_o_clock = new Date;
 
@@ -145,39 +144,39 @@ $(document).ready(function() {
 
         return beer_o_clock;
 
-    }
+    };
 
     // How long till you can haz beer!
-    function time_till_beer() {
+    beer.how_long = function() {
 
-        var beer_o_clock = get_beer_o_clock(),
-            now = is_beer_o_clock() ? beer_o_clock : new Date;
+        var beer_o_clock = this.get_date(),
+            now = this.can_haz() ? beer_o_clock : new Date;
 
         return new Date(beer_o_clock - now);
 
-    }
+    };
 
     // How full should the beer glass be?
-    function time_till_beer_percentage() {
+    beer.how_long_percentage = function() {
 
-        if (is_beer_o_clock()) {
+        if (this.can_haz()) {
 
             return GLASS_FULL;
 
         }
 
         var now = new Date / 1000,
-            beer = get_beer_o_clock() / 1000;
+            beer = this.get_date() / 1000;
 
         return parseInt(GLASS_FULL - (((beer - now) / 86400) * 100));
 
-    }
+    };
 
-    function update() {
+    beer.pour = function() {
 
         // Update the page content
-        var time = time_till_beer();
-        var pretty_time = format_time(time);
+        var time = beer.how_long();
+        var pretty_time = beer.format_time(time);
 
         // Update the hours display
         $.each($hours, function(index, value) {
@@ -201,7 +200,7 @@ $(document).ready(function() {
         });
 
         // Update the title
-        if (is_beer_o_clock()) {
+        if (beer.can_haz()) {
 
             document.title = "It's Beer o'clock now!";
 
@@ -230,12 +229,12 @@ $(document).ready(function() {
 
         // Fill up that beer glass!
         $(".tasty-beverage").css({
-            height: time_till_beer_percentage() + '%'
+            height: beer.how_long_percentage() + '%'
         });
 
     }
     
-    function professorburpsbubbleworks() {
+    beer.release_the_bubblez = function() {
         
         var $bubbles = $('.bubbles');
         var minBubbleCount = parseFloat($bubbles.attr('data-bubble-min-count')), // Minimum number of bubbles
@@ -247,11 +246,14 @@ $(document).ready(function() {
         var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
         
         for (var i = 0; i < bubbleCount; i++) {
+
             $bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
+        
         }
 
         // Make each bubble random
-        $bubbles.find('> .bubble-container').each(function(){
+        $bubbles.find('> .bubble-container').each(function() {
+
             // Randomise their size
             var sizeRand = minBubbleSize + Math.floor(Math.random() * (maxBubbleSize + 1));
             
@@ -287,16 +289,20 @@ $(document).ready(function() {
                 'width' : sizeRand + 'px',
                 'height' : sizeRand + 'px'
             });
+
         });
-    }
+
+    };
         
     // Activate the bubble cannon
     if ($('.bubbles').attr('data-bubbles') === 'true') {
-        professorburpsbubbleworks();
+
+        beer.release_the_bubblez();
+
     }
     
     // Update the clock
-    update();
-    setInterval(update, 1000);
+    beer.pour();
+    setInterval(beer.pour, 1000);
 
 });
