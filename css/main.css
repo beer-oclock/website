@@ -401,7 +401,13 @@ body:before {
 	top: -32px;
 	width: 227px;
 	height: 163px;
-	background: url(../img/ice-lime.png);	
+	background: url(../img/ice-lime.png);
+	
+	-webkit-animation: icefloat 3s infinite ease-in-out;
+       -moz-animation: icefloat 3s infinite ease-in-out;
+        -ms-animation: icefloat 3s infinite ease-in-out;
+            animation: icefloat 3s infinite ease-in-out;
+	
 }
 
 .drink-gintonic .beverage-head {
@@ -565,6 +571,43 @@ Animation Stuff
     margin-left: 2px;
   }
 }
+
+
+/* Floating Ice */
+
+@-webkit-keyframes icefloat {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 3px;
+  }
+}
+@-moz-keyframes icefloat {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 3px;
+  }
+}
+@-ms-keyframes icefloat {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 3px;
+  }
+}
+@keyframes icefloat {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 3px;
+  }
+}
+
 
 /* Beer O'Clock Alert */
 
