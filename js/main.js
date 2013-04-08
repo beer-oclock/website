@@ -235,64 +235,64 @@ $(document).ready(function() {
 
     }
     
-	function professorburpsbubbleworks() {
-	    
+    function professorburpsbubbleworks() {
+        
         var $bubbles = $('.bubbles');
-		var minBubbleCount = parseFloat($bubbles.attr('data-bubble-min-count')), // Minimum number of bubbles
-		    maxBubbleCount = parseFloat($bubbles.attr('data-bubble-max-count')), // Maximum number of bubbles
-    	    minBubbleSize = parseFloat($bubbles.attr('data-bubble-min-size')), // Smallest possible bubble diameter (px)
-		    maxBubbleSize = parseFloat($bubbles.attr('data-bubble-max-size')); // Largest possible bubble diameter (px)
-    	
-		// Generate our bubbles from the above options
-		var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
-		
-		for (var i = 0; i < bubbleCount; i++) {
-			$bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
-		}
+        var minBubbleCount = parseFloat($bubbles.attr('data-bubble-min-count')), // Minimum number of bubbles
+            maxBubbleCount = parseFloat($bubbles.attr('data-bubble-max-count')), // Maximum number of bubbles
+            minBubbleSize = parseFloat($bubbles.attr('data-bubble-min-size')), // Smallest possible bubble diameter (px)
+            maxBubbleSize = parseFloat($bubbles.attr('data-bubble-max-size')); // Largest possible bubble diameter (px)
+        
+        // Generate our bubbles from the above options
+        var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
+        
+        for (var i = 0; i < bubbleCount; i++) {
+            $bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
+        }
 
-		// Make each bubble random
-		$bubbles.find('> .bubble-container').each(function(){
-			// Randomise their size
-			var sizeRand = minBubbleSize + Math.floor(Math.random() * (maxBubbleSize + 1));
-			
-			// Randomly position the bubbles
-			var posRand = Math.floor(Math.random() * 101);
-			
-			// Randomise the time they start rising
-			var delayRand = Math.floor(Math.random() * 16);
-			
-			// Randomise their speed
-			var speedRand = 3 + Math.floor(Math.random() * 9);
-			
+        // Make each bubble random
+        $bubbles.find('> .bubble-container').each(function(){
+            // Randomise their size
+            var sizeRand = minBubbleSize + Math.floor(Math.random() * (maxBubbleSize + 1));
+            
+            // Randomly position the bubbles
+            var posRand = Math.floor(Math.random() * 101);
+            
+            // Randomise the time they start rising
+            var delayRand = Math.floor(Math.random() * 16);
+            
+            // Randomise their speed
+            var speedRand = 3 + Math.floor(Math.random() * 9);
+            
             // Cache the this selector
             var $this = $(this);
 
-			// Stick the above to the bubble container
-			$this.css({
-				'left' : posRand + '%',
-				
-				'-webkit-animation-duration' : speedRand + 's',
-				'-moz-animation-duration' : speedRand + 's',
-				'-ms-animation-duration' : speedRand + 's',
-				'animation-duration' : speedRand + 's',
-				
-				'-webkit-animation-delay' : delayRand + 's',
-				'-moz-animation-delay' : delayRand + 's',
-				'-ms-animation-delay' : delayRand + 's',
-				'animation-delay' : delayRand + 's'
-			});
-			
-			// And set the bubble size
-			$this.children('.bubble').css({
-				'width' : sizeRand + 'px',
-				'height' : sizeRand + 'px'
-			});
-		});
-	}
-		
-	// Activate the bubble cannon
+            // Stick the above to the bubble container
+            $this.css({
+                'left' : posRand + '%',
+                
+                '-webkit-animation-duration' : speedRand + 's',
+                '-moz-animation-duration' : speedRand + 's',
+                '-ms-animation-duration' : speedRand + 's',
+                'animation-duration' : speedRand + 's',
+                
+                '-webkit-animation-delay' : delayRand + 's',
+                '-moz-animation-delay' : delayRand + 's',
+                '-ms-animation-delay' : delayRand + 's',
+                'animation-delay' : delayRand + 's'
+            });
+            
+            // And set the bubble size
+            $this.children('.bubble').css({
+                'width' : sizeRand + 'px',
+                'height' : sizeRand + 'px'
+            });
+        });
+    }
+        
+    // Activate the bubble cannon
     if ($('.bubbles').attr('data-bubbles') === 'true') {
-    	professorburpsbubbleworks();
+        professorburpsbubbleworks();
     }
     
     // Update the clock
