@@ -224,7 +224,7 @@ $(document).ready(function() {
             time_string += time.getSeconds() + 's ';
 
             document.title = time_string;
-            window.location.hash = time_string;
+            // window.location.hash = time_string;
 
         }
 
