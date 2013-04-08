@@ -276,6 +276,54 @@ body:before {
 }
 
 
+/* HiBall Styles */
+      
+.hiball {
+  position: relative;
+  width: 228px;
+  height: 500px;
+  margin: 10px auto;
+}
+
+.hiball .drink-glass {
+  z-index: 600;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 228px;
+  max-height: 500px;
+  
+  background: url(../img/hiball-overlay.png) no-repeat center bottom;
+  background-size: 100%;
+}
+
+.hiball .glass-overlay {
+  display: none;
+}
+
+.hiball .tasty-beverage {
+  z-index: 200;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+  min-height: 1%;
+  max-height: 485px;
+    
+  -webkit-transition: all 3s ease-in-out;
+     -moz-transition: all 3s ease-in-out;
+      -ms-transition: all 3s ease-in-out;
+       -o-transition: all 3s ease-in-out;
+          transition: all 3s ease-in-out;
+}
+
+.hiball .beverage-head {
+  display: none;
+}
+
+
 /* Different Drinks */
       
 /* Lager */
@@ -327,25 +375,68 @@ body:before {
   background: #eee3da;
 }
 
+/* Gin & Tonic */
+
+.drink-gintonic .tasty-beverage {
+	background: #e9eff5;
+}
+
+.drink-gintonic .bubble {
+	border-color: rgba(0,0,0,0.15);
+	background: rgba(0,0,0,0.05);
+}
+
+/* Cola */
+
+.drink-cola .tasty-beverage {
+	background: #180802;
+}
+
+/* Ice & Lime */
+.drink-gintonic .beverage-head,
+.drink-cola .beverage-head {
+	z-index: 250;
+	display: block;
+	position: absolute;
+	top: -32px;
+	width: 227px;
+	height: 163px;
+	background: url(../img/ice-lime.png);	
+}
+
+.drink-gintonic .beverage-head {
+	opacity: 0.75;
+}
+
+.drink-cola .beverage-head {
+	opacity: 0.2;
+}
+
+
 /* Bubbles */
 
 .bubbles {
+  overflow: hidden;
   position: relative;
-  width: 100%;
+  width: 90%;
   height: 100%;
+  margin: 0 auto;
 }
 
 .bubble-container {
   opacity: 0;
   position: absolute;
   bottom: 10px;
-  width: 20px;
-  height: 12px;
   
   -webkit-animation: bubblerise 4s infinite ease-in;
      -moz-animation: bubblerise 4s infinite ease-in;
       -ms-animation: bubblerise 4s infinite ease-in;
           animation: bubblerise 4s infinite ease-in;
+}
+
+.bubble-container:active .bubble {
+	border-color: rgba(255,255,255,0.25);
+	background: rgba(255,255,255,0.15);
 }
 
 .bubble {
@@ -384,10 +475,10 @@ Animation Stuff
   }
   99% {
     opacity: 1;
-    bottom: 100%;
   }
   100% {
     opacity: 0;
+    bottom: 100%;
   }
 }
 @-moz-keyframes bubblerise {
@@ -401,10 +492,10 @@ Animation Stuff
   }
   99% {
     opacity: 1;
-    bottom: 100%;
   }
   100% {
     opacity: 0;
+    bottom: 100%;
   }
 }
 @-ms-keyframes bubblerise {
@@ -418,10 +509,10 @@ Animation Stuff
   }
   99% {
     opacity: 1;
-    bottom: 100%;
   }
   100% {
     opacity: 0;
+    bottom: 100%;
   }
 }
 @keyframes bubblerise {
@@ -435,10 +526,10 @@ Animation Stuff
   }
   99% {
     opacity: 1;
-    bottom: 100%;
   }
   100% {
     opacity: 0;
+    bottom: 100%;
   }
 }
 
