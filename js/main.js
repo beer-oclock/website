@@ -1,4 +1,58 @@
-$(function() {
+// Set up the store
+var preferences = {};
+
+// Is local storage supported?
+preferences.supported = function() {
+
+    try {
+
+        return window.localStorage !== undefined;
+
+    } catch (e) {
+
+        return false;
+
+    }
+
+};
+
+// Get a key
+preferences.get = function(key) {
+
+    // Does the browser support local storage?
+    if (this.supported()) {
+
+        return window.localStorage[key];
+
+    }
+
+};
+
+// Set a key
+preferences.set = function(key, value) {
+
+    // Does the browser support local storage?
+    if (this.supported()) {
+
+        return window.localStorage[key] = value;
+
+    }
+
+};
+
+// Unset a key
+preferences.unset = function(key) {
+
+    // Does the browser support local storage?
+    if (this.supported()) {
+
+        return window.localStorage.removeItem(key)
+
+    }
+
+};
+
+$(document).ready(function() {
 
     var BEER_O_CLOCK = 17; // 5 PM
     const GLASS_FULL = 100;
@@ -183,22 +237,21 @@ $(function() {
     
 	function professorburpsbubbleworks() {
 	    
-		var minBubbleCount = parseFloat($('.bubbles').attr('data-bubble-min-count')); // Minimum number of bubbles
-		var maxBubbleCount = parseFloat($('.bubbles').attr('data-bubble-max-count')); // Maximum number of bubbles
-    	
-		var minBubbleSize = parseFloat($('.bubbles').attr('data-bubble-min-size')); // Smallest possible bubble diameter (px)
-		var maxBubbleSize = parseFloat($('.bubbles').attr('data-bubble-max-size')); // Largest possible bubble diameter (px)
-    	
+        var $bubbles = $('.bubbles');
+		var minBubbleCount = parseFloat($bubbles.attr('data-bubble-min-count')), // Minimum number of bubbles
+		    maxBubbleCount = parseFloat($bubbles.attr('data-bubble-max-count')), // Maximum number of bubbles
+    	    minBubbleSize = parseFloat($bubbles.attr('data-bubble-min-size')), // Smallest possible bubble diameter (px)
+		    maxBubbleSize = parseFloat($bubbles.attr('data-bubble-max-size')); // Largest possible bubble diameter (px)
     	
 		// Generate our bubbles from the above options
 		var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
 		
-		for(var i = 0; i < bubbleCount; i++) {
-			$('.bubbles').append('<div class="bubble-container"><div class="bubble"></div></div>');
+		for (var i = 0; i < bubbleCount; i++) {
+			$bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
 		}
 
 		// Make each bubble random
-		$('.bubbles > .bubble-container').each(function(){
+		$bubbles.find('> .bubble-container').each(function(){
 			// Randomise their size
 			var sizeRand = minBubbleSize + Math.floor(Math.random() * (maxBubbleSize + 1));
 			
@@ -211,8 +264,11 @@ $(function() {
 			// Randomise their speed
 			var speedRand = 3 + Math.floor(Math.random() * 9);
 			
+            // Cache the this selector
+            var $this = $(this);
+
 			// Stick the above to the bubble container
-			$(this).css({
+			$this.css({
 				'left' : posRand + '%',
 				
 				'-webkit-animation-duration' : speedRand + 's',
@@ -227,7 +283,7 @@ $(function() {
 			});
 			
 			// And set the bubble size
-			$(this).children('.bubble').css({
+			$this.children('.bubble').css({
 				'width' : sizeRand + 'px',
 				'height' : sizeRand + 'px'
 			});
@@ -235,7 +291,7 @@ $(function() {
 	}
 		
 	// Activate the bubble cannon
-    if ($('.bubbles').attr('data-bubbles') == 'true') {
+    if ($('.bubbles').attr('data-bubbles') === 'true') {
     	professorburpsbubbleworks();
     }
     
