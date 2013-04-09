@@ -302,7 +302,40 @@ $(document).ready(function() {
     }
     
     // Update the clock
+<<<<<<< HEAD
     beer.pour();
     setInterval(beer.pour, 1000);
 
+=======
+    update();
+    setInterval(update, 1000);
+    
+    // Delay loading of sharing stuff
+    // until everything else has loaded
+	$(window).on('load', function() {
+	
+		// Facebooks
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.async = true; js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=441260642628600";
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk')); 
+		
+		// Twitter
+		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
+		
+		// Google Plus
+		window.___gcfg = {lang: 'en-GB'};
+		(function() {
+			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+			po.src = 'https://apis.google.com/js/plusone.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+		})();
+		
+		$('.social-sharing').fadeIn();
+	});
+    
+>>>>>>> Added Sharing Buttons
 });
