@@ -302,13 +302,9 @@ $(document).ready(function() {
     }
     
     // Update the clock
-<<<<<<< HEAD
     beer.pour();
     setInterval(beer.pour, 1000);
 
-=======
-    update();
-    setInterval(update, 1000);
     
     // Delay loading of sharing stuff
     // until everything else has loaded
@@ -337,5 +333,4 @@ $(document).ready(function() {
 		$('.social-sharing').fadeIn();
 	});
     
->>>>>>> Added Sharing Buttons
 });
