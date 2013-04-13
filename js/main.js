@@ -119,7 +119,7 @@ user.setBubblez = function(bubble_status) {
 
 $(document).ready(function() {
 
-    var BEEROCLOCK = 24; // 5 PM
+    var BEEROCLOCK = 17; // 5 PM
     const GLASS_FULL = 100;
 
     var drink = {},
