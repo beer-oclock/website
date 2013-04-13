@@ -581,7 +581,7 @@ $(document).ready(function() {
         // Make sure the correct drink is selected in the list
         $('#drink-list').find('> option[value="' + user.getDrink() + '"]')[0].selected = true;
 
-        $('.settings-panel').slideToggle();
+        $('.settings-panel, .site-footer').slideToggle();
 
     });
 
