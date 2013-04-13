@@ -16,13 +16,31 @@ preferences.supported = function() {
 
 };
 
+preferences.getInstance = function() {
+
+    if (this.supported()) {
+
+        // If one doesn't already exist then create it
+        if (window.localStorage['beeroclock'] === undefined) {
+
+            window.localStorage['beeroclock'] = '{}';
+
+        }
+
+        return JSON.parse(window.localStorage['beeroclock']);
+
+    }
+
+};
+
 // Get a key
 preferences.get = function(key) {
 
     // Does the browser support local storage?
     if (this.supported()) {
 
-        return window.localStorage[key] != 'undefined' ? JSON.parse(window.localStorage[key]) : undefined;
+        var preferences_object = preferences.getInstance();
+        return preferences[key] != undefined ? JSON.parse(window.localStorage[key]) : undefined;
 
     }
 
@@ -34,7 +52,14 @@ preferences.set = function(key, value) {
     // Does the browser support local storage?
     if (this.supported()) {
 
-        window.localStorage[key] = JSON.stringify(value);
+        // Get the preferences object
+        var preferences_object = preferences.getInstance();
+
+        // Add the new key to it
+        preferences_object[key] = value;
+
+        // Save the whole object back
+        window.localStorage['beeroclock'] = JSON.stringify(preferences_object);
         return value;
 
     }
@@ -47,7 +72,14 @@ preferences.unset = function(key) {
     // Does the browser support local storage?
     if (this.supported()) {
 
-        return window.localStorage.removeItem(key)
+        // Get the preferences object
+        var preferences_object = preferences.getInstance();
+        
+        // Delete the key
+        delete preferences_object[key];
+
+        // Overwrite the whole preferences object with the new instance
+        window.localStorage['beeroclock'] = JSON.parse(preferences_object);
 
     }
 
@@ -464,17 +496,14 @@ $(document).ready(function() {
     
     // User Settings
     drink.set = function() {
-
-        // Save the drink to user preferences
-        user.setDrink(drink);
         
         // Get the drink settings
-        var drink = drinks[user.getDrink()];
+        var user_drink = drinks[user.getDrink()];
         
         // Clear existing and set the drink type
         $('#drink-type').removeClass().fadeOut('100', function() {
 
-            $(this).addClass(drink.glass + ' ' + drink.liquid).fadeIn('250');
+            $(this).addClass(user_drink.glass + ' ' + user_drink.liquid).fadeIn('250');
 
         });
         
@@ -482,9 +511,9 @@ $(document).ready(function() {
         $('.bubbles').empty();
         
         // If drink has bubbles, and user hasn't disabled them, run the bubble cannon
-        if (drink.bubbles && user.getBubblez()) {
+        if (this.bubbles && user.getBubblez()) {
 
-            drink.releaseTheBubblez(user.getDrink());
+            this.releaseTheBubblez(user.getDrink());
 
         }
         
@@ -492,7 +521,7 @@ $(document).ready(function() {
         var $bubble_toggle = $('.bubble-toggle');
         
         // Show/Hide toggle button based on drink settings
-        if (!drink.bubbles) {
+        if (!this.bubbles) {
 
             $bubble_toggle.hide();
 
@@ -544,7 +573,7 @@ $(document).ready(function() {
     $('.settings-toggle').on('click', $('.settings-panel').slideToggle);
     
     // What will it be?
-    drink.set(user.getDrink());
+    drink.set();
     
     // And go..
     drink.pour();
