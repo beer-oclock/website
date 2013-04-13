@@ -1,85 +1,3 @@
-// Define our different drinks
-var drinkTypes = {
-	// Pint of Lager
-	"1": {
-	    glass: "uk-pint",
-	    liquid: "drink-lager",
-	    bubbles: true,
-	    bubblesMin: "20",
-	    bubblesMax: "40",
-	    bubblesSmall: "2",
-	    bubblesBig: "6"
-	},
-	
-	// Pint of Ale
-	"2": {
-	    glass: "uk-pint",
-	    liquid: "drink-ale",
-	    bubbles: false,
-	    bubblesMin: "0",
-	    bubblesMax: "0",
-	    bubblesSmall: "0",
-	    bubblesBig: "0"
-	},
-	
-	// Pint of Stout
-	"3": {
-	    glass: "uk-pint",
-	    liquid: "drink-stout",
-	    bubbles: false,
-	    bubblesMin: "0",
-	    bubblesMax: "0",
-	    bubblesSmall: "0",
-	    bubblesBig: "0"
-	},
-	
-	// Bottle of Lager
-	"4": {
-	    glass: "beer-bottle",
-	    liquid: "drink-lager-light",
-	    bubbles: true,
-	    bubblesMin: "10",
-	    bubblesMax: "30",
-	    bubblesSmall: "2",
-	    bubblesBig: "4"
-	},
-	
-	// Gin & Tonic
-	"5": {
-	    glass: "hiball",
-	    liquid: "drink-gintonic",
-	    bubbles: true,
-	    bubblesMin: "10",
-	    bubblesMax: "30",
-	    bubblesSmall: "2",
-	    bubblesBig: "4"
-	},
-	
-	// Coke Mixer
-	"6": {
-	    glass: "hiball",
-	    liquid: "drink-cola",
-	    bubbles: true,
-	    bubblesMin: "10",
-	    bubblesMax: "30",
-	    bubblesSmall: "2",
-	    bubblesBig: "4"
-	},
-	
-	// Bottle of Alcopop
-	"7": {
-	    glass: "beer-bottle alcopop-bottle",
-	    liquid: "drink-blue-alcopop",
-	    bubbles: true,
-	    bubblesMin: "10",
-	    bubblesMax: "30",
-	    bubblesSmall: "1",
-	    bubblesBig: "2"
-	},
-
-}
-
-
 // Set up the store
 var preferences = {};
 
@@ -104,7 +22,7 @@ preferences.get = function(key) {
     // Does the browser support local storage?
     if (this.supported()) {
 
-        return window.localStorage[key];
+        return window.localStorage[key] != 'undefined' ? JSON.parse(window.localStorage[key]) : undefined;
 
     }
 
@@ -116,7 +34,8 @@ preferences.set = function(key, value) {
     // Does the browser support local storage?
     if (this.supported()) {
 
-        return window.localStorage[key] = value;
+        window.localStorage[key] = JSON.stringify(value);
+        return value;
 
     }
 
@@ -134,13 +53,45 @@ preferences.unset = function(key) {
 
 };
 
+// Set up the user object
+var user = {};
+
+user.getDrink = function() {
+
+    var drink = preferences.get('drink');
+    return drink !== undefined ? drink : user.setDrink(1);
+
+};
+
+user.setDrink = function(drink) {
+
+    preferences.set('drink', drink);
+    return drink;
+
+};
+
+// Does the user want bubbles displayed?
+user.getBubblez = function() {
+
+    var bubblez = preferences.get('bubblez');
+    return bubblez !== undefined ? bubblez : user.setBubblez(true);
+
+};
+
+user.setBubblez = function(bubble_status) {
+
+    preferences.set('bubblez', bubble_status);
+    return bubble_status;
+
+};
+
 $(document).ready(function() {
 
-    var BEER_O_CLOCK = 17; // 5 PM
+    var BEEROCLOCK = 24; // 5 PM
     const GLASS_FULL = 100;
 
-    var beer = {},
-        inde,
+    var drink = {},
+        index,
         full_query_string = window.location.href.split('?')[1],
         $hours = $('.countdown-hours > .digit'),
         $minutes = $('.countdown-minutes > .digit'),
@@ -165,40 +116,110 @@ $(document).ready(function() {
     // Allow overriding of beer o'clock for debug
     if (typeof query_string.t != 'undefined') {
 
-        BEER_O_CLOCK = query_string.t;
+        BEEROCLOCK = query_string.t;
 
     }
 
-    // Is it the weekend? If so it's always beer o'clock!
-    beer.is_weekend = function() {
-
-        var now = new Date;
-
-        // Saturday = 6 and Sunday = 0
-        return now.getDay() === 6 || now.getDay() === 0;
-
+    // Define our different drinks
+    var drinks = {
+        // Pint of Lager
+        1: {
+            glass: "uk-pint",
+            liquid: "drink-lager",
+            bubbles: true,
+            bubbles_min: 20,
+            bubbles_max: 40,
+            bubbles_small: 2,
+            bubbles_big: 6
+        },
+        
+        // Pint of Ale
+        2: {
+            glass: "uk-pint",
+            liquid: "drink-ale",
+            bubbles: false,
+            bubbles_min: "0",
+            bubbles_max: "0",
+            bubbles_small: "0",
+            bubbles_big: "0"
+        },
+        
+        // Pint of Stout
+        3: {
+            glass: "uk-pint",
+            liquid: "drink-stout",
+            bubbles: false,
+            bubbles_min: 0,
+            bubbles_max: 0,
+            bubbles_small: 0,
+            bubbles_big: 0
+        },
+        
+        // Bottle of Lager
+        4: {
+            glass: "beer-bottle",
+            liquid: "drink-lager-light",
+            bubbles: true,
+            bubbles_min: 10,
+            bubbles_max: 30,
+            bubbles_small: 2,
+            bubbles_big: 4
+        },
+        
+        // Gin & Tonic
+        5: {
+            glass: "hiball",
+            liquid: "drink-gintonic",
+            bubbles: true,
+            bubbles_min: 10,
+            bubbles_max: 30,
+            bubbles_small: 2,
+            bubbles_big: 4
+        },
+        
+        // Coke Mixer
+        6: {
+            glass: "hiball",
+            liquid: "drink-cola",
+            bubbles: true,
+            bubbles_min: 10,
+            bubbles_max: 30,
+            bubbles_small: 2,
+            bubbles_big: 4
+        },
+        
+        // Bottle of Alcopop
+        7: {
+            glass: "beer-bottle alcopop-bottle",
+            liquid: "drink-blue-alcopop",
+            bubbles: true,
+            bubbles_min: 10,
+            bubbles_max: 30,
+            bubbles_small: 1,
+            bubbles_big: 2
+        }
     };
 
     // Is it beer o'clock? i.e the weekend or after beer o'clock on the current day
-    beer.can_haz = function() {
+    drink.canHaz = function() {
 
-        return this.is_weekend() || (new Date).getHours() >= BEER_O_CLOCK;
+        return (new Date).getHours() >= BEEROCLOCK;
 
     };
 
     // Add leading zeros to numbers
-    beer.leading_zero = function(number) {
+    drink.leadingZero = function(number) {
 
         return number < 10 ? '0' + number : number;
 
     };
 
     // Format a Date object a bit more nicely
-    beer.format_time = function(date) {
+    drink.formatTime = function(date) {
 
-        var hours = this.leading_zero(date.getHours()),
-            minutes = this.leading_zero(date.getMinutes()),
-            seconds = this.leading_zero(date.getSeconds());
+        var hours = this.leadingZero(date.getHours()),
+            minutes = this.leadingZero(date.getMinutes()),
+            seconds = this.leadingZero(date.getSeconds());
 
         return {
             hours: hours.toString().split(''),
@@ -209,56 +230,56 @@ $(document).ready(function() {
     };
 
     // A Date object for when beer o'clock is
-    beer.get_date = function() {
+    drink.getDate = function() {
 
-        var beer_o_clock = new Date;
+        var drink_date = new Date;
 
         // If it's already past beer o'clock then we need to wait till tomorrow
-        if (beer_o_clock.getHours() >= BEER_O_CLOCK) {
+        if (drink_date.getHours() >= BEEROCLOCK) {
 
-            beer_o_clock.setDate(beer_o_clock.getDate() + 1);
+            drink_date.setDate(drink_date.getDate() + 1);
 
         }
 
-        beer_o_clock.setHours(BEER_O_CLOCK);
-        beer_o_clock.setMinutes(0);
-        beer_o_clock.setSeconds(0);
+        drink_date.setHours(BEEROCLOCK);
+        drink_date.setMinutes(0);
+        drink_date.setSeconds(0);
 
-        return beer_o_clock;
+        return drink_date;
 
     };
 
     // How long till you can haz beer!
-    beer.how_long = function() {
+    drink.howLong = function() {
 
-        var beer_o_clock = this.get_date(),
-            now = this.can_haz() ? beer_o_clock : new Date;
+        var beeroclock_date = this.getDate(),
+            now = this.canHaz() ? beeroclock_date : new Date;
 
-        return new Date(beer_o_clock - now);
+        return new Date(beeroclock_date - now);
 
     };
 
     // How full should the beer glass be?
-    beer.how_long_percentage = function() {
+    drink.howLongPercentage = function() {
 
-        if (this.can_haz()) {
+        if (this.canHaz()) {
 
             return GLASS_FULL;
 
         }
 
         var now = new Date / 1000,
-            beer = this.get_date() / 1000;
+            beer = this.getDate() / 1000;
 
         return parseInt(GLASS_FULL - (((beer - now) / 86400) * 100));
 
     };
 
-    beer.pour = function() {
+    drink.pour = function() {
 
         // Update the page content
-        var time = beer.how_long();
-        var pretty_time = beer.format_time(time);
+        var time = drink.howLong();
+        var pretty_time = drink.formatTime(time);
 
         // Update the hours display
         $.each($hours, function(index, value) {
@@ -282,7 +303,7 @@ $(document).ready(function() {
         });
 
         // Update the title
-        if (beer.can_haz()) {
+        if (drink.canHaz()) {
 
             document.title = "It's Beer o'clock now!";
 
@@ -311,228 +332,250 @@ $(document).ready(function() {
 
         // Fill up that beer glass!
         $(".tasty-beverage").css({
-            height: beer.how_long_percentage() + '%'
+            height: drink.howLongPercentage() + '%'
         });
 
     }
     
-    var userSettings = preferences.get('user-settings');
-    
-    beer.release_the_bubblez = function(drinkId) {
+    drink.releaseTheBubblez = function(drinkId) {
         
         // Get variables
         var $bubbles = $('.bubbles');
         
         // Get bubble settings
-        var drink = drinkTypes[drinkId];
-        var minBubbleCount = parseFloat(drink.bubblesMin), // Minimum number of bubbles
-            maxBubbleCount = parseFloat(drink.bubblesMax), // Maximum number of bubbles
-            minBubbleSize = parseFloat(drink.bubblesSmall), // Smallest possible bubble diameter (px)
-            maxBubbleSize = parseFloat(drink.bubblesBig); // Largest possible bubble diameter (px)
+        var drink = drinks[user.getDrink()];
+
+        var min_bubble_count = drink.bubbles_min, // Minimum number of bubbles
+            max_bubble_count = drink.bubbles_max, // Maximum number of bubbles
+            min_bubble_size = drink.bubbles_small, // Smallest possible bubble diameter (px)
+            max_bubble_size = drink.bubbles_big; // Largest possible bubble diameter (px)
                 
         // If drink has bubbles, generate our bubbles from the above options
         $bubbles.empty();
-        if (drink.bubbles == true) {
-	        var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
-	        
-	        for (var i = 0; i < bubbleCount; i++) {
-	            $bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
-	        }
+
+        if (drink.bubbles) {
+
+            var bubbleCount = min_bubble_count + Math.floor(Math.random() * (max_bubble_count + 1));
+            
+            for (var i = 0; i < bubbleCount; i++) {
+
+                $bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
+            
+            }
+
         }
 
         // Make each bubble random
         $bubbles.find('> .bubble-container').each(function() {
 
             // Randomise their size
-            var sizeRand = minBubbleSize + Math.floor(Math.random() * (maxBubbleSize + 1));
+            var size_rand = min_bubble_size + Math.floor(Math.random() * (max_bubble_size + 1));
             
             // Randomly position the bubbles
-            var posRand = Math.floor(Math.random() * 101);
+            var pos_rand = Math.floor(Math.random() * 101);
             
             // Randomise the time they start rising
-            var delayRand = Math.floor(Math.random() * 16);
+            var delay_rand = Math.floor(Math.random() * 16);
             
             // Randomise their speed
-            var speedRand = 3 + Math.floor(Math.random() * 9);
+            var speed_rand = 3 + Math.floor(Math.random() * 9);
             
             // Cache the this selector
             var $this = $(this);
 
             // Stick the above to the bubble container
             $this.css({
-                'left' : posRand + '%',
+                'left' : pos_rand + '%',
                 
-                '-webkit-animation-duration' : speedRand + 's',
-                '-moz-animation-duration' : speedRand + 's',
-                '-ms-animation-duration' : speedRand + 's',
-                'animation-duration' : speedRand + 's',
+                '-webkit-animation-duration' : speed_rand + 's',
+                '-moz-animation-duration' : speed_rand + 's',
+                '-ms-animation-duration' : speed_rand + 's',
+                'animation-duration' : speed_rand + 's',
                 
-                '-webkit-animation-delay' : delayRand + 's',
-                '-moz-animation-delay' : delayRand + 's',
-                '-ms-animation-delay' : delayRand + 's',
-                'animation-delay' : delayRand + 's'
+                '-webkit-animation-delay' : delay_rand + 's',
+                '-moz-animation-delay' : delay_rand + 's',
+                '-ms-animation-delay' : delay_rand + 's',
+                'animation-delay' : delay_rand + 's'
             });
             
             // And set the bubble size
             $this.children('.bubble').css({
-                'width' : sizeRand + 'px',
-                'height' : sizeRand + 'px'
+                'width' : size_rand + 'px',
+                'height' : size_rand + 'px'
             });
 
         });
     };
     
-    beer.bubbles_on = function() {
-    	// Create the bubbles
-    	beer.release_the_bubblez(userSettings);
-    	
-    	// Show the bubbles
-    	$('.bubbles').fadeIn('1000', function(){
-    		
-    		// Start the animation
-	    	$('.bubble-container').css({
-	    		'animation-play-state' : 'running',
+    drink.bubblesOn = function() {
+
+        // Create the bubbles
+        drink.releaseTheBubblez();
+        
+        // Show the bubbles
+        $('.bubbles').fadeIn('1000', function(){
+            
+            // Start the animation
+            $('.bubble-container').css({
+                'animation-play-state' : 'running',
                 '-webkit-animation-play-state' : 'running'
-	    	});
-	    	
-	    	// Change the toggle text
-	    	$('.bubble-toggle').text('Bubbles Off');
-    	});
-    }
+            });
+            
+            // Change the toggle text
+            $('.bubble-toggle').text('Bubbles Off');
+        });
+
+    };
     
-    beer.bubbles_off = function() {    	
-    	// Hide the bubbles
-    	$('.bubbles').fadeOut('2500', function() {
-    		// Stop the animation
-	    	$('.bubble-container').css({
-	    		'animation-play-state' : 'paused',
+    drink.bubblesOff = function() {  
+
+        // Hide the bubbles
+        $('.bubbles').fadeOut('2500', function() {
+            // Stop the animation
+            $('.bubble-container').css({
+                'animation-play-state' : 'paused',
                 '-webkit-animation-play-state' : 'paused'
-	    	});
-	    	
-	    	// Remove the bubble divs
-	    	$('.bubbles').empty();
-	    	
-	    	// Change the toggle text
-	    	$('.bubble-toggle').text('Bubbles On');
-    	});
-    }
+            });
+            
+            // Remove the bubble divs
+            $('.bubbles').empty();
+            
+            // Change the toggle text
+            $('.bubble-toggle').text('Bubbles On');
+        });
+
+    };
     
-    beer.bubble_controls = function() {
-    	var bubbleState = preferences.get('bubble-status');
-                
-    	if (bubbleState === 'false') {    	
-	    	preferences.set('bubble-status', 'true');
-	    	beer.bubbles_on();
-    	} else {
-	    	preferences.set('bubble-status', 'false');
-	    	beer.bubbles_off();
-    	}
-    }    
+    drink.toggleBubblez = function() {
+
+        if (!user.getBubblez()) {
+
+            user.setBubblez(true);
+            drink.bubbles_on();
+        
+        } else {
+        
+            user.setBubblez(false);
+            drink.bubbles_off();
+        
+        }
+
+    }; 
     
     // User Settings
-    beer.setDrink = function(userDrink) {
-    	// Save the drink to user preferences
-	    preferences.set('user-settings', userDrink);
-	    
-	    // Get the drink settings
-	    var drink = drinkTypes[userDrink];
-	    
-	    // Clear existing and set the drink type
-	    $('#drink-type').removeClass();
-		$('#drink-type').fadeOut('100', function() {
-			$(this).addClass(drink.glass + ' ' + drink.liquid).fadeIn('250')
-		});
-	    
-	    // Get rid of existing bubbles
-	    $('.bubbles').empty();
-	    
-	    // If drink has bubbles, and user hasn't disabled them, run the bubble cannon
-		if ((drink.bubbles == true) && (preferences.get('bubble-status') !== 'false')) {
-			beer.release_the_bubblez(userDrink);
-		}
-		
-		// Toggle button
-	    var $bubbleToggle = $('.bubble-toggle');
-		
-		// Show/Hide toggle button based on drink settings
-		if(drink.bubbles == false) {
-			$bubbleToggle.hide();
-		} else {
-			$bubbleToggle.show();
-		}
-		
-		// Set toggle button text based on user prefs
-		if (preferences.get('bubble-status') !== 'false') {
-			$bubbleToggle.text('Bubbles Off');
-		} else {
-			$bubbleToggle.text('Bubbles On');
-		}
+    drink.set = function() {
+
+        // Save the drink to user preferences
+        user.setDrink(drink);
+        
+        // Get the drink settings
+        var drink = drinks[user.getDrink()];
+        
+        // Clear existing and set the drink type
+        $('#drink-type').removeClass().fadeOut('100', function() {
+
+            $(this).addClass(drink.glass + ' ' + drink.liquid).fadeIn('250');
+
+        });
+        
+        // Get rid of existing bubbles
+        $('.bubbles').empty();
+        
+        // If drink has bubbles, and user hasn't disabled them, run the bubble cannon
+        if (drink.bubbles && user.getBubblez()) {
+
+            drink.releaseTheBubblez(user.getDrink());
+
+        }
+        
+        // Toggle button
+        var $bubble_toggle = $('.bubble-toggle');
+        
+        // Show/Hide toggle button based on drink settings
+        if (!drink.bubbles) {
+
+            $bubble_toggle.hide();
+
+        } else {
+
+            $bubble_toggle.show();
+
+        }
+        
+        // Set toggle button text based on user prefs
+        if (user.getBubblez()) {
+
+            $bubble_toggle.text('Bubbles Off');
+
+        } else {
+
+            $bubble_toggle.text('Bubbles On');
+
+        }
     }
-    
-    // Set drink onload
-    if (userSettings !== undefined) {
-	    beer.setDrink(userSettings);
-	} else {
-		beer.setDrink("1");
-		preferences.set('bubble-status', 'true');
-	}
         
     // Customise form - save settings
-    $( "#settings-form" ).on( "submit", function( event ) {
-		event.preventDefault();
-		
-		var values = {};
-		$.each($(this).serializeArray(), function(i, field) {
-			values[field.name] = field.value;
-		});
-		
-		beer.setDrink(values['drinkType']);
-		$('.settings-panel').slideToggle();
-	});
+    $('#settings-form').on('submit', function(event) {
+
+        // Prevent the browser from submitting the form normally
+        event.preventDefault();
+        
+        var values = {};
+
+        // Serialize the form into a storable format
+        $.each($(this).serializeArray(), function(i, field) {
+
+            values[field.name] = field.value;
+
+        });
+        
+        // Set the drink type
+        user.setDrink(values['drink_type']);
+
+        // Close the panel
+        $('.settings-panel').slideToggle();
+
+    });
            
     // Toggle the Bubble Cannon
-    $('.bubble-toggle').click(function(){
-    	beer.bubble_controls();
-    });
+    $('.bubble-toggle').on('click', drink.toggleBubblez);
     
     // Settings Panel Toggle
-    $('.settings-toggle').click(function() {
-       $('.settings-panel').slideToggle(); 
-       
-       return false;
-    });
+    $('.settings-toggle').on('click', $('.settings-panel').slideToggle);
     
+    // What will it be?
+    drink.set(user.getDrink());
     
-    // Update the clock
-    beer.pour();
-    setInterval(beer.pour, 1000);
+    // And go..
+    drink.pour();
+    setInterval(drink.pour, 1000);
+    
+});
 
+// Delay loading of sharing stuff
+// until everything else has loaded
+$(window).on('load', function() {
+
+    // Facebooks
+    (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.async = true; js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=441260642628600";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk')); 
     
-    // Delay loading of sharing stuff
-    // until everything else has loaded
-	$(window).on('load', function() {
-	
-		// Facebooks
-		(function(d, s, id) {
-			var js, fjs = d.getElementsByTagName(s)[0];
-			if (d.getElementById(id)) return;
-			js = d.createElement(s); js.id = id;
-			js.async = true; js.src = "//connect.facebook.net/en_GB/all.js#xfbml=1&appId=441260642628600";
-			fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk')); 
-		
-		// Twitter
-		!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
-		
-		// Google Plus
-		window.___gcfg = {lang: 'en-GB'};
-		(function() {
-			var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-			po.src = 'https://apis.google.com/js/plusone.js';
-			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-		})();
-		
-		$('.social-sharing').delay(500).fadeIn();
-	});
+    // Twitter
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");
     
+    // Google Plus
+    window.___gcfg = {lang: 'en-GB'};
+    (function() {
+        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+        po.src = 'https://apis.google.com/js/plusone.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+    })();
+    
+    $('.social-sharing').delay(500).fadeIn();
+
 });
