@@ -260,7 +260,6 @@ body:before {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	border-top: 1px solid #fff;
 	background: #222;
 	background: rgba(0,0,0,0.8);
 	color: #fff;
@@ -268,7 +267,8 @@ body:before {
 }
 
 .settings-inner {
-	padding: 20px 0;
+	padding: 30px 0;
+  overflow: hidden; /* Clearfix */
 }
 
 .settings-options {
@@ -313,6 +313,11 @@ body:before {
 	font-weight: bold;
 }
 
+.settings-cancel {
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+}
 
 /* Select Styling */
 
