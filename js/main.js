@@ -40,7 +40,7 @@ preferences.get = function(key) {
     if (this.supported()) {
 
         var preferences_object = preferences.getInstance();
-        return preferences[key] != undefined ? JSON.parse(window.localStorage[key]) : undefined;
+        return preferences_object[key] != undefined ? JSON.parse(preferences_object[key]) : undefined;
 
     }
 
@@ -494,8 +494,7 @@ $(document).ready(function() {
 
     }; 
     
-    // User Settings
-    drink.set = function() {
+    drink.render = function() {
         
         // Get the drink settings
         var user_drink = drinks[user.getDrink()];
@@ -541,30 +540,37 @@ $(document).ready(function() {
             $bubble_toggle.text('Bubbles On');
 
         }
-    }
-        
-    // Customise form - save settings
-    $('#settings-form').on('submit', function(event) {
+    };
 
-        // Prevent the browser from submitting the form normally
-        event.preventDefault();
-        
-        var values = {};
+    $('#drink-list').on('change', function() {
 
-        // Serialize the form into a storable format
-        $.each($(this).serializeArray(), function(i, field) {
-
-            values[field.name] = field.value;
-
-        });
-        
-        // Set the drink type
-        user.setDrink(values['drink_type']);
-
-        // Close the panel
-        $('.settings-panel').slideToggle();
+        user.setDrink($(this).find(':selected').val());
+        drink.render();
 
     });
+        
+    // Customise form - save settings
+    // $('#settings-form').on('submit', function(event) {
+
+    //     // Prevent the browser from submitting the form normally
+    //     event.preventDefault();
+        
+    //     var values = {};
+
+    //     // Serialize the form into a storable format
+    //     $.each($(this).serializeArray(), function(i, field) {
+
+    //         values[field.name] = field.value;
+
+    //     });
+        
+    //     // Set the drink type
+    //     user.setDrink(values['drink_type']);
+
+    //     // Close the panel
+    //     $('.settings-panel').slideToggle();
+
+    // });
            
     // Toggle the Bubble Cannon
     $('.bubble-toggle').on('click', drink.toggleBubblez);
@@ -575,13 +581,13 @@ $(document).ready(function() {
         $('.settings-panel').slideToggle();
 
     });
-    
-    // What will it be?
-    drink.set();
-    
+
     // And go..
+    drink.render();
     drink.pour();
     setInterval(drink.pour, 1000);
+
+    window.drink = drink;
     
 });
 
