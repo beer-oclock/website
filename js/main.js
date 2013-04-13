@@ -1,3 +1,85 @@
+// Define our different drinks
+var drinkTypes = {
+	// Pint of Lager
+	"1": {
+	    glass: "uk-pint",
+	    liquid: "drink-lager",
+	    bubbles: true,
+	    bubblesMin: "20",
+	    bubblesMax: "40",
+	    bubblesSmall: "2",
+	    bubblesBig: "6"
+	},
+	
+	// Pint of Ale
+	"2": {
+	    glass: "uk-pint",
+	    liquid: "drink-ale",
+	    bubbles: false,
+	    bubblesMin: "0",
+	    bubblesMax: "0",
+	    bubblesSmall: "0",
+	    bubblesBig: "0"
+	},
+	
+	// Pint of Stout
+	"3": {
+	    glass: "uk-pint",
+	    liquid: "drink-stout",
+	    bubbles: false,
+	    bubblesMin: "0",
+	    bubblesMax: "0",
+	    bubblesSmall: "0",
+	    bubblesBig: "0"
+	},
+	
+	// Bottle of Lager
+	"4": {
+	    glass: "beer-bottle",
+	    liquid: "drink-lager-light",
+	    bubbles: true,
+	    bubblesMin: "10",
+	    bubblesMax: "30",
+	    bubblesSmall: "2",
+	    bubblesBig: "4"
+	},
+	
+	// Gin & Tonic
+	"5": {
+	    glass: "hiball",
+	    liquid: "drink-gintonic",
+	    bubbles: true,
+	    bubblesMin: "10",
+	    bubblesMax: "30",
+	    bubblesSmall: "2",
+	    bubblesBig: "4"
+	},
+	
+	// Coke Mixer
+	"6": {
+	    glass: "hiball",
+	    liquid: "drink-cola",
+	    bubbles: true,
+	    bubblesMin: "10",
+	    bubblesMax: "30",
+	    bubblesSmall: "2",
+	    bubblesBig: "4"
+	},
+	
+	// Bottle of Alcopop
+	"7": {
+	    glass: "beer-bottle alcopop-bottle",
+	    liquid: "drink-blue-alcopop",
+	    bubbles: true,
+	    bubblesMin: "10",
+	    bubblesMax: "30",
+	    bubblesSmall: "1",
+	    bubblesBig: "2"
+	},
+
+}
+
+
 // Set up the store
 var preferences = {};
 
@@ -234,21 +316,28 @@ $(document).ready(function() {
 
     }
     
-    beer.release_the_bubblez = function() {
+    var userSettings = preferences.get('user-settings');
+    
+    beer.release_the_bubblez = function(drinkId) {
         
+        // Get variables
         var $bubbles = $('.bubbles');
-        var minBubbleCount = parseFloat($bubbles.attr('data-bubble-min-count')), // Minimum number of bubbles
-            maxBubbleCount = parseFloat($bubbles.attr('data-bubble-max-count')), // Maximum number of bubbles
-            minBubbleSize = parseFloat($bubbles.attr('data-bubble-min-size')), // Smallest possible bubble diameter (px)
-            maxBubbleSize = parseFloat($bubbles.attr('data-bubble-max-size')); // Largest possible bubble diameter (px)
         
-        // Generate our bubbles from the above options
-        var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
-        
-        for (var i = 0; i < bubbleCount; i++) {
-
-            $bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
-        
+        // Get bubble settings
+        var drink = drinkTypes[drinkId];
+        var minBubbleCount = parseFloat(drink.bubblesMin), // Minimum number of bubbles
+            maxBubbleCount = parseFloat(drink.bubblesMax), // Maximum number of bubbles
+            minBubbleSize = parseFloat(drink.bubblesSmall), // Smallest possible bubble diameter (px)
+            maxBubbleSize = parseFloat(drink.bubblesBig); // Largest possible bubble diameter (px)
+                
+        // If drink has bubbles, generate our bubbles from the above options
+        $bubbles.empty();
+        if (drink.bubbles == true) {
+	        var bubbleCount = minBubbleCount + Math.floor(Math.random() * (maxBubbleCount + 1));
+	        
+	        for (var i = 0; i < bubbleCount; i++) {
+	            $bubbles.append('<div class="bubble-container"><div class="bubble"></div></div>');
+	        }
         }
 
         // Make each bubble random
@@ -291,15 +380,128 @@ $(document).ready(function() {
             });
 
         });
-
     };
-        
-    // Activate the bubble cannon
-    if ($('.bubbles').attr('data-bubbles') === 'true') {
-
-        beer.release_the_bubblez();
-
+    
+    beer.bubbles_on = function() {
+    	// Create the bubbles
+    	beer.release_the_bubblez(userSettings);
+    	
+    	// Show the bubbles
+    	$('.bubbles').fadeIn('1000', function(){
+    		
+    		// Start the animation
+	    	$('.bubble-container').css({
+	    		'animation-play-state' : 'running',
+                '-webkit-animation-play-state' : 'running'
+	    	});
+	    	
+	    	// Change the toggle text
+	    	$('.bubble-toggle').text('Bubbles Off');
+    	});
     }
+    
+    beer.bubbles_off = function() {    	
+    	// Hide the bubbles
+    	$('.bubbles').fadeOut('2500', function() {
+    		// Stop the animation
+	    	$('.bubble-container').css({
+	    		'animation-play-state' : 'paused',
+                '-webkit-animation-play-state' : 'paused'
+	    	});
+	    	
+	    	// Remove the bubble divs
+	    	$('.bubbles').empty();
+	    	
+	    	// Change the toggle text
+	    	$('.bubble-toggle').text('Bubbles On');
+    	});
+    }
+    
+    beer.bubble_controls = function() {
+    	var bubbleState = preferences.get('bubble-status');
+                
+    	if (bubbleState === 'false') {    	
+	    	preferences.set('bubble-status', 'true');
+	    	beer.bubbles_on();
+    	} else {
+	    	preferences.set('bubble-status', 'false');
+	    	beer.bubbles_off();
+    	}
+    }    
+    
+    // User Settings
+    beer.setDrink = function(userDrink) {
+    	// Save the drink to user preferences
+	    preferences.set('user-settings', userDrink);
+	    
+	    // Get the drink settings
+	    var drink = drinkTypes[userDrink];
+	    
+	    // Clear existing and set the drink type
+	    $('#drink-type').removeClass();
+		$('#drink-type').fadeOut('100', function() {
+			$(this).addClass(drink.glass + ' ' + drink.liquid).fadeIn('250')
+		});
+	    
+	    // Get rid of existing bubbles
+	    $('.bubbles').empty();
+	    
+	    // If drink has bubbles, and user hasn't disabled them, run the bubble cannon
+		if ((drink.bubbles == true) && (preferences.get('bubble-status') !== 'false')) {
+			beer.release_the_bubblez(userDrink);
+		}
+		
+		// Toggle button
+	    var $bubbleToggle = $('.bubble-toggle');
+		
+		// Show/Hide toggle button based on drink settings
+		if(drink.bubbles == false) {
+			$bubbleToggle.hide();
+		} else {
+			$bubbleToggle.show();
+		}
+		
+		// Set toggle button text based on user prefs
+		if (preferences.get('bubble-status') !== 'false') {
+			$bubbleToggle.text('Bubbles Off');
+		} else {
+			$bubbleToggle.text('Bubbles On');
+		}
+    }
+    
+    // Set drink onload
+    if (userSettings !== undefined) {
+	    beer.setDrink(userSettings);
+	} else {
+		beer.setDrink("1");
+		preferences.set('bubble-status', 'true');
+	}
+        
+    // Customise form - save settings
+    $( "#settings-form" ).on( "submit", function( event ) {
+		event.preventDefault();
+		
+		var values = {};
+		$.each($(this).serializeArray(), function(i, field) {
+			values[field.name] = field.value;
+		});
+		
+		beer.setDrink(values['drinkType']);
+		$('.settings-panel').slideToggle();
+	});
+           
+    // Toggle the Bubble Cannon
+    $('.bubble-toggle').click(function(){
+    	beer.bubble_controls();
+    });
+    
+    // Settings Panel Toggle
+    $('.settings-toggle').click(function() {
+       $('.settings-panel').slideToggle(); 
+       
+       return false;
+    });
+    
     
     // Update the clock
     beer.pour();
@@ -330,7 +532,7 @@ $(document).ready(function() {
 			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
 		})();
 		
-		$('.social-sharing').fadeIn();
+		$('.social-sharing').delay(500).fadeIn();
 	});
     
 });

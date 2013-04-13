@@ -8,14 +8,14 @@
 </head>
 
 <body>
-
+	
 	<div class="site-container">
 		<div class="main-content">
 			
-			<header class="site-header">
+			<header class="site-header" role="banner">
 				<h1>Beer<br/>O'clock</h1>
 				<p>How long until the most important time of day?</p>
-				<div class="social-sharing" style="display: none;">
+				<div class="social-sharing">
 					<div class="share-button facebook-share">
 						<div class="fb-like" data-href="http://beeroclock.in" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
 					</div>
@@ -28,19 +28,21 @@
 				</div>
 			</header>
 		
-			<div class="drink-container uk-pint">
-				<div class="drink-glass">
-					<div class="glass-overlay"></div>
-				</div>
-				<div class="liquid-content drink-lager">
-					<div class="tasty-beverage">
-						<div class="beverage-head"></div>
-						<div class="bubbles" data-bubbles="true" data-bubble-min-count="20" data-bubble-max-count="40" data-bubble-min-size="2" data-bubble-max-size="6"></div>
+			<div class="drink-container" role="presentation">
+				<div id="drink-type">
+					<div class="drink-glass">
+						<div class="glass-overlay"></div>
+					</div>
+					<div class="liquid-content">
+						<div class="tasty-beverage">
+							<div class="beverage-head"></div>
+							<div class="bubbles"></div>
+						</div>
 					</div>
 				</div>
 			</div>
 			
-			<section class="countdown-timer">
+			<section class="countdown-timer" role="main">
 				<h2>Time until Beer O'clock</h2>
 				<div class="countdown-container">
 					<!-- <div class="countdown-segment countdown-days">
@@ -49,18 +51,18 @@
 					</div> -->
 					<div class="countdown-segment countdown-hours">
 						<h3 class="countdown-label">Hours</h3>
-						<div class="digit">1</div>
-						<div class="digit">3</div>
+						<div class="digit">0</div>
+						<div class="digit">0</div>
 					</div>
 					<div class="countdown-segment countdown-minutes">
 						<h3 class="countdown-label">Minutes</h3>
-						<div class="digit">4</div>
-						<div class="digit">2</div>
+						<div class="digit">0</div>
+						<div class="digit">0</div>
 					</div>
 					<div class="countdown-segment countdown-seconds">
 						<h3 class="countdown-label">Seconds</h3>
-						<div class="digit">1</div>
-						<div class="digit">4</div>
+						<div class="digit">0</div>
+						<div class="digit">0</div>
 					</div>
 				</div>
 				
@@ -74,10 +76,91 @@
 		</div>
 	</div>
 	
-	<footer class="site-footer">
-		<!-- <a href="#" class="site-customise" title="Pour your own pint!">Customise</a> -->
-		<small class="site-credits">Brewed by <a href="http://twitter.com/jamesrwhite">James White</a> &amp; <a href="http://twitter.com/benhodgson">Ben Hodgson</a></small>
+	<footer class="site-footer" role="contentinfo">
+		<div class="site-options">
+			<a href="#" class="site-customise bubble-toggle" title="Toggle Bubble Animation - You may want to disable bubbles on slow computers, or if your laptop fans start to sound like a fighter jet.">Bubbles Off</a>
+			<a href="#" class="site-customise settings-toggle" title="Pour your own pint!">Customise</a>
+		</div>
+		<small class="site-credits">Brewed by <a href="http://jamesrwhite.co.uk">James White</a> &amp; <a href="http://benhodgson.net">Ben Hodgson</a></small>
 	</footer>
+	
+	<section class="settings-panel">
+		<form id="settings-form" class="settings-inner">
+			<h2>Customise Beer O'clock</h2>
+			<div class="settings-segment drink-type">
+				<h3>Make mine a&hellip;</h3>
+				<fieldset class="select-box drink-options">
+					<select id="drink-list" name="drinkType">
+						<option value="1">Pint of Lager</option>
+						<option value="2">Pint of Ale</option>
+						<option value="3">Pint of Stout</option>
+						<option value="4">Bottle of Beer</option>
+						<option value="5">Gin & Tonic</option>
+						<option value="6">Cola</option>
+						<option value="7">Blue Alcopop</option>
+					</select>
+				</fieldset>
+			</div>
+			<div class="settings-segment day-selector">
+				<h3>On these days&hellip;</h3>
+				<fieldset class="week-list">
+					<div class="checkbox">
+						<label for="checkbox-mon">Mon</label>
+					    <input type="checkbox" name="dayMon" id="checkbox-mon" class="regular-checkbox" value="1" />
+					</div>
+					<div class="checkbox">
+					    <label for="checkbox-tue">Tue</label>
+					    <input type="checkbox" name="dayTue" id="checkbox-tue" class="regular-checkbox" value="1" />
+				    </div>
+					<div class="checkbox">
+					    <label for="checkbox-wed">Wed</label>
+					    <input type="checkbox" name="dayWed" id="checkbox-wed" class="regular-checkbox" value="1" />
+				    </div>
+					<div class="checkbox">
+					    <label for="checkbox-thu">Thu</label>
+					    <input type="checkbox" name="dayThu" id="checkbox-thu" class="regular-checkbox" value="1" />
+				    </div>
+					<div class="checkbox">
+					    <label for="checkbox-fri">Fri</label>
+					    <input type="checkbox" name="dayFri" id="checkbox-fri" class="regular-checkbox" value="1" />
+				    </div>
+					<div class="checkbox">
+					    <label for="checkbox-sat">Sat</label>
+					    <input type="checkbox" name="daySat" id="checkbox-sat" class="regular-checkbox" value="1" />
+				    </div>
+					<div class="checkbox">
+					    <label for="checkbox-sun">Sun</label>
+					    <input type="checkbox" name="daySun" id="checkbox-sun" class="regular-checkbox" value="1" />
+					</div>
+				</fieldset>
+			</div>
+			<div class="settings-segment time-selector">
+				<h3>At this time&hellip;</h3>
+				<div class="select-box hour-options">
+					<select name="startHour">
+						<option value="00">00</option>
+						<option value="01">01</option>
+						<option value="02">02</option>
+						<option value="03">03</option>
+						<option value="04">04</option>
+						<option value="05">05</option>
+					</select>
+				</div>
+				<div class="select-box minute-options">
+					<select name="startMin">
+						<option value="00">00</option>
+						<option value="15">15</option>
+						<option value="30">30</option>
+						<option value="45">45</option>
+					</select>
+				</div>
+			</div>
+			<div class="settings-options">
+				<input type="submit" value="Save" />
+				<a href="#" class="settings-cancel settings-toggle">Cancel</a>
+			</div>
+		</form>
+	</section>
 	
 	<div id="fb-root"></div>
 
