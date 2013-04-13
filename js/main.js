@@ -570,7 +570,11 @@ $(document).ready(function() {
     $('.bubble-toggle').on('click', drink.toggleBubblez);
     
     // Settings Panel Toggle
-    $('.settings-toggle').on('click', $('.settings-panel').slideToggle);
+    $('.settings-toggle').on('click', function() {
+
+        $('.settings-panel').slideToggle();
+
+    });
     
     // What will it be?
     drink.set();
