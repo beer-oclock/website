@@ -339,6 +339,9 @@ $(document).ready(function() {
 
             document.title = "It's Beer o'clock now!";
 
+            $('.beer-oclock-notification').show();
+            $('.countdown-container').hide();
+
         } else {
 
             var time_string = '';
@@ -585,10 +588,15 @@ $(document).ready(function() {
 
     });
 
-    // And go..
     drink.render();
-    drink.pour();
-    setInterval(drink.pour, 1000);
+
+    // And go..
+    setTimeout(function() {
+        
+        drink.pour();
+        setInterval(drink.pour, 1000);
+
+    }, 1000);
 
     window.drink = drink;
     
