@@ -372,7 +372,7 @@ $(document).ready(function() {
 
     }
     
-    drink.releaseTheBubblez = function(drinkId) {
+    drink.releaseTheBubblez = function() {
         
         // Get variables
         var $bubbles = $('.bubbles');
@@ -513,7 +513,7 @@ $(document).ready(function() {
         $('.bubbles').empty();
         
         // If drink has bubbles, and user hasn't disabled them, run the bubble cannon
-        if (this.bubbles && user.getBubblez()) {
+        if (user_drink.bubbles && user.getBubblez()) {
 
             this.releaseTheBubblez(user.getDrink());
 
