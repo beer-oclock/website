@@ -137,31 +137,31 @@
 				<fieldset class="week-list">
 					<div class="checkbox">
 						<label for="checkbox-mon">Mon</label>
-					    <input type="checkbox" name="day_mon" id="checkbox-mon" class="regular-checkbox" value="1" />
+						<input type="checkbox" name="day_mon" id="checkbox-mon" class="regular-checkbox" value="1" />
 					</div>
 					<div class="checkbox">
-					    <label for="checkbox-tue">Tue</label>
-					    <input type="checkbox" name="day_tue" id="checkbox-tue" class="regular-checkbox" value="1" />
-				    </div>
+						<label for="checkbox-tue">Tue</label>
+						<input type="checkbox" name="day_tue" id="checkbox-tue" class="regular-checkbox" value="1" />
+					</div>
 					<div class="checkbox">
-					    <label for="checkbox-wed">Wed</label>
-					    <input type="checkbox" name="day_wed" id="checkbox-wed" class="regular-checkbox" value="1" />
-				    </div>
+						<label for="checkbox-wed">Wed</label>
+						<input type="checkbox" name="day_wed" id="checkbox-wed" class="regular-checkbox" value="1" />
+					</div>
 					<div class="checkbox">
-					    <label for="checkbox-thu">Thu</label>
-					    <input type="checkbox" name="day_thu" id="checkbox-thu" class="regular-checkbox" value="1" />
-				    </div>
+						<label for="checkbox-thu">Thu</label>
+						<input type="checkbox" name="day_thu" id="checkbox-thu" class="regular-checkbox" value="1" />
+					</div>
 					<div class="checkbox">
-					    <label for="checkbox-fri">Fri</label>
-					    <input type="checkbox" name="day_fri" id="checkbox-fri" class="regular-checkbox" value="1" />
-				    </div>
+						<label for="checkbox-fri">Fri</label>
+						<input type="checkbox" name="day_fri" id="checkbox-fri" class="regular-checkbox" value="1" />
+					</div>
 					<div class="checkbox">
-					    <label for="checkbox-sat">Sat</label>
-					    <input type="checkbox" name="day_sat" id="checkbox-sat" class="regular-checkbox" value="1" />
-				    </div>
+						<label for="checkbox-sat">Sat</label>
+						<input type="checkbox" name="day_sat" id="checkbox-sat" class="regular-checkbox" value="1" />
+					</div>
 					<div class="checkbox">
-					    <label for="checkbox-sun">Sun</label>
-					    <input type="checkbox" name="day_sun" id="checkbox-sun" class="regular-checkbox" value="1" />
+						<label for="checkbox-sun">Sun</label>
+						<input type="checkbox" name="day_sun" id="checkbox-sun" class="regular-checkbox" value="1" />
 					</div>
 				</fieldset>
 			</div>
@@ -212,6 +212,21 @@
 		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
 		})();
+		var GoSquared = {};
+		GoSquared.acct = "GSN-740835-C";
+		(function(w){
+			function gs(){
+				w._gstc_lt = +new Date;
+				var d = document, g = d.createElement("script");
+				g.type = "text/javascript";
+				g.src = "//d1l6p2sc9645hc.cloudfront.net/tracker.js";
+				var s = d.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(g, s);
+			}
+			w.addEventListener ?
+			w.addEventListener("load", gs, false) :
+			w.attachEvent("onload", gs);
+		})(window);
 	</script>
 
 </body>
