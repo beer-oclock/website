@@ -345,13 +345,6 @@ body:before {
 	border-radius: 20px;
 	
 	text-shadow: none;
-	cursor: pointer;
-}
-.customSelect:hover {
-	background-color: #f0f0f0;
-}
-customSelect.changed {
-	background-color: #f0dea4;
 }
 .customSelectInner {
 	width: 100% !important;
