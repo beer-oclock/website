@@ -505,8 +505,8 @@ $(document).ready(function() {
     
     drink.render = function() {
         
-        // Get the drink settings
-        var user_drink = drinks[user.getDrink()];
+        // If the drink is set in the query string
+        user_drink = typeof query_string.drink != 'undefined' ? drinks[query_string.drink] : drinks[user.getDrink()];
         
         // Clear existing and set the drink type
         $('#drink-type').removeClass().fadeOut('100', function() {
