@@ -292,10 +292,10 @@ $(document).ready(function() {
 
         var beeroclock_date = this.getDate(),
             now = this.canHaz() ? beeroclock_date : new Date,
-            hours_diff = Math.abs(beeroclock_date.getHours() - now.getHours()),
+            hours_diff = Math.abs((beeroclock_date.getHours() - now.getHours()) - 1),
             minutes_diff = Math.abs(60 - now.getMinutes()),
             seconds_diff = Math.abs(60 - now.getSeconds());
-
+ 
         var diff = new Date;
             diff.setHours(hours_diff);
             diff.setMinutes(minutes_diff);
