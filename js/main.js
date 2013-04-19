@@ -279,7 +279,7 @@ $(document).ready(function() {
 
         }
 
-        drink_date.setHours(BEEROCLOCK + (new Date().getTimezoneOffset() / 60));
+        drink_date.setHours(BEEROCLOCK);
         drink_date.setMinutes(0);
         drink_date.setSeconds(0);
 
