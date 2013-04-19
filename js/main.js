@@ -486,12 +486,12 @@ $(document).ready(function() {
         if (!user.getBubblez()) {
 
             user.setBubblez(true);
-            drink.bubbles_on();
+            drink.bubblesOn();
         
         } else {
         
             user.setBubblez(false);
-            drink.bubbles_off();
+            drink.bubblesOff();
         
         }
 
@@ -523,7 +523,7 @@ $(document).ready(function() {
         var $bubble_toggle = $('.bubble-toggle');
         
         // Show/Hide toggle button based on drink settings
-        if (!this.bubbles) {
+        if (!user_drink.bubbles) {
 
             $bubble_toggle.hide();
 
