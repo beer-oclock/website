@@ -279,7 +279,7 @@ $(document).ready(function() {
 
         }
 
-        drink_date.setHours(BEEROCLOCK);
+        drink_date.setHours(BEEROCLOCK + (new Date().getTimezoneOffset() / 60));
         drink_date.setMinutes(0);
         drink_date.setSeconds(0);
 
@@ -505,8 +505,8 @@ $(document).ready(function() {
     
     drink.render = function() {
         
-        // If the drink is set in the query string
-        user_drink = typeof query_string.drink != 'undefined' ? drinks[query_string.drink] : drinks[user.getDrink()];
+        // Get the drink settings
+        var user_drink = drinks[user.getDrink()];
         
         // Clear existing and set the drink type
         $('#drink-type').removeClass().fadeOut('100', function() {
@@ -593,6 +593,13 @@ $(document).ready(function() {
         $('.settings-panel, .site-footer').slideToggle();
 
     });
+
+    // Was a drink set in the query string?
+    if (typeof query_string.drink != 'undefined') {
+
+        user.setDrink(query_string.drink);
+
+    }
 
     drink.render();
 
