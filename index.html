@@ -1,10 +1,45 @@
 <!doctype html>
 <html>
 <head>
-	<!-- Download CSS asap -->
+	<meta charset="UTF-8">
+	<!--[if IE]><![endif]-->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta http-equiv="imagetoolbar" content="false" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta name="description" content="A handy tool to answer the most important question of the day... How long until Beer O'Clock?" />
+	<title>Beer O'clock</title>
+	
+	<!-- OpenGraph -->
+	<meta property="og:title" content="Beer O'clock" />
+	<meta property="og:type" content="website" />
+	<meta property="og:image" content="http://beeroclock.in/img/og-logo.jpg" />
+	<meta property="og:url" content="http://beeroclock.in/" />
+	<meta property="og:site_name" content="Beer O'clock" />
+	<meta property="og:description" content="A handy tool to answer the most important question of the day... How long until Beer O'Clock?" />
+	
+	<!-- Google+ -->
+	<meta itemprop="name" content="Beer O'clock">
+	<meta itemprop="description" content="A handy tool to answer the most important question of the day... How long until Beer O'Clock?">
+	<meta itemprop="image" content="http://beeroclock.in/img/og-logo.jpg">
+	
+	<!-- Bookmark Icons -->
+	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" href="http://voiceben.com/icons/regular_icon.png" />
+	<link rel="apple-touch-icon" href="http://voiceben.com/icons/ios-bookmark-retina.png" sizes="114x114"/>
+	
+	<!-- CSS -->
 	<link type="text/css" href="css/main.css" rel="stylesheet"/>
+	
+	<!-- Selectivizr for IE 6+7+8 -->
+	<!--[if (gte IE 6)&(lte IE 8)]>
+		<script src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+	<![endif]-->
 
-	<title>Beer o'clock</title>
+	<!-- HTML5 Shiv for < IE9 -->
+	<!--[if lt IE 9]>
+		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
 </head>
 
 <body>
@@ -88,7 +123,7 @@
 			<div class="settings-segment drink-type">
 				<h3>Make mine a&hellip;</h3>
 				<fieldset class="select-box drink-options">
-					<select id="drink-list" name="drink_type">
+					<select id="drink-list" class="styled" name="drink_type">
 						<option value="1">Pint of Lager</option>
 						<option value="2">Pint of Ale</option>
 						<option value="3">Pint of Stout</option>
@@ -159,7 +194,7 @@
 		</form>
 	</section>
 	
-	<a href="https://github.com/jamesrwhite/beeroclock"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
+	<a style="display: block; position: absolute; top: 0; right: 0; width: 150px; height: 150px; border: 0;" href="https://github.com/jamesrwhite/beeroclock"><img src="https://s3.amazonaws.com/github/ribbons/forkme_right_gray_6d6d6d.png" alt="Fork me on GitHub"></a>
 	
 	<div id="fb-root"></div>
 
