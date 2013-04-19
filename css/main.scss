@@ -99,6 +99,10 @@ body:before {
   margin-top: -280px;
 }
 
+#drink-type {
+	overflow: hidden;
+}
+
 .tasty-beverage {
 	-webkit-transition: height 2.5s ease-in-out;
        -moz-transition: height 2.5s ease-in-out;
