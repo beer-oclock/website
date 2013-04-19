@@ -1,3 +1,9 @@
+/* 
+ * Beer O'Clock
+ * @jamesrwhite
+ * @benhodgson
+ */
+
 // Set up the store
 var preferences = {};
 
