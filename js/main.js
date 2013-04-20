@@ -123,9 +123,22 @@ user.setBubblez = function(bubble_status) {
 
 };
 
+user.getTime = function() {
+
+    var time = preferences.get('time');
+    return time !== undefined ? time : user.setTime(17); // Default to 5pm
+
+};
+
+user.setTime = function(time) {
+
+    preferences.set('time', time);
+    return time;
+
+};
+
 $(document).ready(function() {
 
-    var BEEROCLOCK = 17; // 5 PM
     const GLASS_FULL = 100;
 
     var drink = {},
@@ -154,7 +167,7 @@ $(document).ready(function() {
     // Allow overriding of beer o'clock for debug
     if (typeof query_string.t != 'undefined') {
 
-        BEEROCLOCK = query_string.t;
+        user.setTime(query_string.t);
 
     }
 
@@ -243,7 +256,7 @@ $(document).ready(function() {
 
         var now = new Date;
 
-        return now.getHours() >= BEEROCLOCK || now.getDay() === 6 || now.getDay() === 0;
+        return now.getHours() >= user.getTime() || now.getDay() === 6 || now.getDay() === 0;
 
     };
 
@@ -275,13 +288,13 @@ $(document).ready(function() {
         var drink_date = new Date;
 
         // If it's already past beer o'clock then we need to wait till tomorrow
-        if (drink_date.getHours() >= BEEROCLOCK) {
+        if (drink_date.getHours() >= user.getTime()) {
 
             drink_date.setDate(drink_date.getDate() + 1);
 
         }
 
-        drink_date.setHours(BEEROCLOCK);
+        drink_date.setHours(user.getTime());
         drink_date.setMinutes(0);
         drink_date.setSeconds(0);
 
@@ -561,35 +574,20 @@ $(document).ready(function() {
         }
     };
 
-    $('#drink-list').on('change', function() {
+    // Handle the user changing their drink
+    $('select[name="drink_type"]').on('change', function() {
 
         user.setDrink($(this).find(':selected').val());
         drink.render();
 
     });
-        
-    // Customise form - save settings
-    // $('#settings-form').on('submit', function(event) {
 
-    //     // Prevent the browser from submitting the form normally
-    //     event.preventDefault();
-        
-    //     var values = {};
+    // Handle the user changing their drink time
+    $('select[name="start_hour"]').on('change', function() {
 
-    //     // Serialize the form into a storable format
-    //     $.each($(this).serializeArray(), function(i, field) {
+        user.setTime($(this).find(':selected').val());
 
-    //         values[field.name] = field.value;
-
-    //     });
-        
-    //     // Set the drink type
-    //     user.setDrink(values['drink_type']);
-
-    //     // Close the panel
-    //     $('.settings-panel').slideToggle();
-
-    // });
+    });
            
     // Toggle the Bubble Cannon
     $('.bubble-toggle').on('click', drink.toggleBubblez);
@@ -598,7 +596,10 @@ $(document).ready(function() {
     $('.settings-toggle').on('click', function() {
 
         // Make sure the correct drink is selected in the list
-        $('#drink-list').find('> option[value="' + user.getDrink() + '"]')[0].selected = true;
+        $('select[name="drink_type"]').find('> option[value="' + user.getDrink() + '"]')[0].selected = true;
+
+        // Make sure the correct drink time is selected in the list
+        $('select[name="start_hour"]').find('> option[value="' + user.getTime() + '"]')[0].selected = true;
 
         $('.settings-panel, .site-footer').slideToggle();
 
@@ -618,6 +619,9 @@ $(document).ready(function() {
         
         drink.pour();
         setInterval(drink.pour, 1000);
+
+        // Apply the custom select styling
+        // $('select.styled').customSelect();
 
     }, 1000);
 
@@ -666,6 +670,4 @@ $(window).on('load', function() {
     // Fade in the share box
     $('.social-sharing').delay(500).fadeIn();
     
-    // Apply the custom select styling
-    $('select.styled').customSelect();
 });
