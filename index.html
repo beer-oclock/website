@@ -2,7 +2,7 @@
 <html>
 <head>
 	<!-- CSS -->
-	<link type="text/css" href="css/main.css?2" rel="stylesheet"/>
+	<link type="text/css" href="css/main.css?3" rel="stylesheet"/>
 	
 	<!--[if IE]><![endif]-->
 	<meta http-equiv="imagetoolbar" content="false" />
@@ -122,7 +122,7 @@
 			<div class="settings-segment drink-type">
 				<h3>Make mine a&hellip;</h3>
 				<fieldset class="select-box drink-options">
-					<select id="drink-list" class="styled" name="drink_type">
+					<select name="drink_type">
 						<option value="1">Pint of Lager</option>
 						<option value="2">Pint of Ale</option>
 						<option value="3">Pint of Stout</option>
@@ -133,8 +133,7 @@
 					</select>
 				</fieldset>
 			</div>
-			<!--
-			<div class="settings-segment day-selector">
+			<!--<div class="settings-segment day-selector">
 				<h3>On these days&hellip;</h3>
 				<fieldset class="week-list">
 					<div class="checkbox">
@@ -166,28 +165,46 @@
 						<input type="checkbox" name="day_sun" id="checkbox-sun" class="regular-checkbox" value="1" />
 					</div>
 				</fieldset>
-			</div>
+			</div>-->
 			<div class="settings-segment time-selector">
 				<h3>At this time&hellip;</h3>
 				<div class="select-box hour-options">
 					<select name="start_hour">
-						<option value="00">00</option>
-						<option value="01">01</option>
-						<option value="02">02</option>
-						<option value="03">03</option>
-						<option value="04">04</option>
-						<option value="05">05</option>
+						<option value="00">Midnight</option>
+						<option value="01">1 AM</option>
+						<option value="02">2 AM</option>
+						<option value="03">3 AM</option>
+						<option value="04">4 AM</option>
+						<option value="05">5 AM</option>
+						<option value="06">6 AM</option>
+						<option value="07">7 AM</option>
+						<option value="08">8 AM</option>
+						<option value="09">9 AM</option>
+						<option value="10">10 AM</option>
+						<option value="11">11 AM</option>
+						<option value="12">Midday</option>
+						<option value="13">1 PM</option>
+						<option value="14">2 PM</option>
+						<option value="15">3 PM</option>
+						<option value="16">4 PM</option>
+						<option value="17" selected>5 PM</option>
+						<option value="18">6 PM</option>
+						<option value="19">7 PM</option>
+						<option value="20">8 PM</option>
+						<option value="21">9 PM</option>
+						<option value="22">10 PM</option>
+						<option value="23">1 PM</option>
 					</select>
 				</div>
-				<div class="select-box minute-options">
+				<!--<div class="select-box minute-options">
 					<select name="start_min">
 						<option value="00">00</option>
 						<option value="15">15</option>
 						<option value="30">30</option>
 						<option value="45">45</option>
 					</select>
-				</div>
-			</div>-->
+				</div>-->
+			</div>
 			<div class="settings-options">
 				<a href="javascript:void(0);" class="settings-cancel settings-toggle">Close</a>
 			</div>
@@ -204,7 +221,7 @@
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	
 	<!-- Main JS -->
-	<script src="js/main.min.js?7"></script>
+	<script src="js/main.js?8"></script>
 
 	<!-- Typekit -->
 	<script type="text/javascript" src="//use.typekit.net/kdh0ouh.js"></script>
