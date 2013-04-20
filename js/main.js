@@ -241,7 +241,9 @@ $(document).ready(function() {
     // Is it beer o'clock? i.e the weekend or after beer o'clock on the current day
     drink.canHaz = function() {
 
-        return (new Date).getHours() >= BEEROCLOCK;
+        var now = new Date;
+
+        return now.getHours() >= BEEROCLOCK || now.getDay() === 6 || now.getDay() === 0;
 
     };
 
