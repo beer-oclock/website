@@ -175,6 +175,8 @@
 		background: -ms-linear-gradient(left,	 #c48135 0%,#c69b45 100%);
 		background: linear-gradient(to right,	 #c48135 0%,#c69b45 100%);
 		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c48135', endColorstr='#c69b45',GradientType=1 );
+
+		left: 1px; // Patch for mis-aligned image
 	}
 	
 	.beverage-head {
