@@ -1,0 +1,46 @@
+/* 
+ * Beer O'Clock
+ * @jamesrwhite
+ * @benhodgson
+ *
+ * Base Settings
+ */
+
+
+// Folder Paths
+
+  $root-path: '..';
+$layout-path: '#{$root-path}/img';
+
+
+// Font Stacks
+
+$heading-font: 'museo-slab', Rockwell, sans-serif;
+  $sans-serif: 'proxima-nova', 'Helvetica Neue', sans-serif;
+
+
+// Responsive Widths
+
+     $handheld: 481px;
+$handheld-wide: 769px;
+       $tablet: 959px;
+
+
+// Mixins
+
+// Sprite
+
+@mixin sprite($x: 0, $y: 0) {
+	background: url('#{$layout-path}/main-sprite.png') no-repeat;
+	background-position-x: $x;
+	background-position-y: $y;
+}
+
+
+// Text Indent Hide
+
+@mixin hide-text() {
+	height: 0;
+	text-indent: -9999px;
+	direction: ltr;
+}
