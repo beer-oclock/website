@@ -44,3 +44,22 @@ $handheld-wide: 769px;
 	text-indent: -9999px;
 	direction: ltr;
 }
+
+
+// Keyframes Mixin
+// https://gist.github.com/ericam/1607696
+
+@mixin keyframes($name) {
+	@-webkit-keyframes #{$name} {
+		@content; 
+	}
+	@-moz-keyframes #{$name} {
+		@content;
+	}
+	@-ms-keyframes #{$name} {
+		@content;
+	}
+	@keyframes #{$name} {
+		@content;
+	} 
+}
