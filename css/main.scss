@@ -25,7 +25,7 @@ body {
 	height: 100%;
 	-webkit-font-smoothing: antialiased;
 	
-	@media screen and (max-width: $handheld-wide) {
+	@media screen and (max-width: $tablet) {
 		position: relative;
 		height: auto;
 	}
@@ -355,7 +355,7 @@ body {
 		color: #fc0;
 		font-family: $heading-font;
 		
-		@media screen and (max-width: $tablet) {
+		@media screen and (max-width: $handheld-wide) {
 			padding: 0 2.5%;
 		}
 	}
@@ -365,7 +365,7 @@ body {
 		margin: 5px 20px 5px 0;
 	}
 	
-	@media screen and (max-width: $tablet) {
+	@media screen and (max-width: $handheld-wide) {
 		padding-bottom: 35px;
 	}
 }
@@ -380,7 +380,7 @@ body {
 	top: 20px;
 	right: 4%;
 	
-	@media screen and (max-width: $tablet) {
+	@media screen and (max-width: $handheld-wide) {
 		top: auto;
 		bottom: 0;
 		left: 2.5%;
@@ -397,7 +397,7 @@ body {
 		margin-bottom: 10px;
 	}
 	
-	@media screen and (max-width: $tablet) {
+	@media screen and (max-width: $handheld-wide) {
 		width: 95%;
 		padding: 10px 2.5%;
 	}
@@ -434,7 +434,7 @@ body {
 	font-weight: bold;
 	text-decoration: none;
 	
-	@media screen and (max-width: $tablet) {
+	@media screen and (max-width: $handheld-wide) {
 		padding: 5px;
 		background: #fc0;
 		color: #222;
