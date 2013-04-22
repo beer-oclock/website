@@ -2,7 +2,6 @@ Beer O'clock
 ==========
 
 [beeroclock.in](http://beeroclock.in)
-
 From [@jamesrwhite](https://twitter.com/jamesrwhite) and [@benhodgson](https://twitter.com/benhodgson)
 
 
