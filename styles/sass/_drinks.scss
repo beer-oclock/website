@@ -10,6 +10,7 @@
 // Include Base
 
 @import "_base";
+@import "compass/css3/images";
 
 
 //
@@ -168,13 +169,7 @@
 .drink-lager {
 	.tasty-beverage {
 		background: #c48135;
-		background: -moz-linear-gradient(left, #c48135 0%, #c69b45 100%);
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c48135), color-stop(100%,#c69b45));
-		background: -webkit-linear-gradient(left,	 #c48135 0%,#c69b45 100%);
-		background: -o-linear-gradient(left,	#c48135 0%,#c69b45 100%);
-		background: -ms-linear-gradient(left,	 #c48135 0%,#c69b45 100%);
-		background: linear-gradient(to right,	 #c48135 0%,#c69b45 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c48135', endColorstr='#c69b45',GradientType=1 );
+		@include background-image(linear-gradient(left, #c48135, #c69b45));
 
 		left: 1px; // Patch for mis-aligned image
 	}
@@ -203,13 +198,7 @@
 .drink-ale {
 	.tasty-beverage {
 		background: #71200b;
-		background: -moz-linear-gradient(left, #71200b 0%, #77380b 100%);
-		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#71200b), color-stop(100%,#77380b));
-		background: -webkit-linear-gradient(left,	 #71200b 0%,#77380b 100%);
-		background: -o-linear-gradient(left,	#71200b 0%,#77380b 100%);
-		background: -ms-linear-gradient(left,	 #71200b 0%,#77380b 100%);
-		background: linear-gradient(to right,	 #71200b 0%,#77380b 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#71200b', endColorstr='#77380b',GradientType=1 );
+		@include background-image(linear-gradient(left, #71200b, #77380b));
 	}
 	
 	.beverage-head {
@@ -224,13 +213,7 @@
 .drink-stout {
 	.tasty-beverage {
 		background: #605a4f;
-		background: -moz-linear-gradient(top,	 #605a4f 0%, #231905 33%, #231905 100%);
-		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#605a4f), color-stop(33%,#231905), color-stop(100%,#231905));
-		background: -webkit-linear-gradient(top,	#605a4f 0%,#231905 33%,#231905 100%);
-		background: -o-linear-gradient(top, #605a4f 0%,#231905 33%,#231905 100%);
-		background: -ms-linear-gradient(top,	#605a4f 0%,#231905 33%,#231905 100%);
-		background: linear-gradient(to bottom, #605a4f 0%,#231905 33%,#231905 100%);
-		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#605a4f', endColorstr='#231905',GradientType=0 );
+		@include background-image(linear-gradient(top, #605a4f, #231905 33%, #231905 100%));
 	}
 	
 	.beverage-head {
