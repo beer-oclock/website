@@ -28,6 +28,14 @@
 		// Start Async script loading
 		$LAB
 
+		// jQuery
+		.script(function() {
+			return typeof IE == 'undefined' ? "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" : "//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js";
+		})
+		
+		// Main
+		.wait().script("js/main.js?9")
+
 		// Typekit
 		.script("//use.typekit.net/kdh0ouh.js").wait(function() {
 			try{Typekit.load();}catch(e){}
@@ -38,14 +46,6 @@
 		
 		// Google Analytics
 		.script("http://www.google-analytics.com/ga.js")
-
-		// jQuery
-		.script(function() {
-			return typeof IE == 'undefined' ? "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" : "//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js";
-		})
-		
-		// Main JS
-		.wait().script("js/main.js?9")
 	</script>
 
 	<!-- Selectivizr for IE 6+7+8 -->
