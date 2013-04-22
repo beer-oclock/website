@@ -392,6 +392,10 @@ $(document).ready(function() {
             document.title = time_string;
             // window.location.hash = time_string;
 
+            // We need to keep doing this in case somebody changed the time
+            $('.beer-oclock-notification').hide();
+            $('.countdown-container').show();
+
         }
 
         // Fill up that beer glass!
