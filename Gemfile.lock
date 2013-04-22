@@ -1,16 +1,23 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     chunky_png (1.2.8)
     compass (0.12.2)
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.1)
+    execjs (1.4.0)
+      multi_json (~> 1.0)
     fssm (0.2.10)
+    multi_json (1.7.2)
     sass (3.2.7)
+    uglifier (2.0.1)
+      execjs (>= 0.3.0)
+      multi_json (~> 1.0, >= 1.0.2)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
   compass
+  uglifier
