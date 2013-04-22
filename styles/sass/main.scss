@@ -190,6 +190,10 @@ body {
 .countdown-container {
 	height: 100%;
 	display: none; // Hidden by default so the JS can decide
+	
+	@media screen and (min-width: $tablet) {
+		margin-right: 5%;
+	}
 }
 
 .countdown-segment {
