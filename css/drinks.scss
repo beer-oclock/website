@@ -1,0 +1,301 @@
+/* 
+ * Beer O'Clock
+ * @jamesrwhite
+ * @benhodgson
+ *
+ * Glass + Drink Styles
+ */
+
+
+// Include Base
+
+@import "_base";
+
+
+//
+// GLASS STYLES
+//
+
+// UK Pint Glass
+	 
+.uk-pint {
+	position: relative;
+	width: 255px;
+	height: 500px;
+	margin: 10px auto;
+ 
+	.drink-glass {
+		z-index: 600;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		max-width: 255px;
+		max-height: 500px;
+		
+		background: url('#{$layout-path}/glasses/pint-overlay.png') no-repeat center bottom;
+		background-size: 100%;
+	}
+	
+	.glass-overlay {
+		display: block;
+		width: 37px;
+		height: 52px;
+		margin: 0 auto 0 auto;
+		padding-top: 75px;
+		background: url('#{$layout-path}/pint-stamp.png') no-repeat center bottom;
+		background-size: 100%;
+	}
+	
+	.tasty-beverage {
+		z-index: 200;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		max-height: 495px;
+		
+		-webkit-border-radius: 149px / 20px;
+		   -moz-border-radius: 149px / 20px;
+				border-radius: 149px / 20px;
+	}
+	
+	.beverage-head {
+		z-index: 400;
+		position: absolute;
+		top: -1px;
+		width: 100%;
+		height: 12.5%;
+		
+		-webkit-border-radius: 149px / 20px;
+		   -moz-border-radius: 149px / 20px;
+				border-radius: 149px / 20px;
+	}
+}
+
+
+// Clear Bottle
+	 
+.beer-bottle {
+	position: relative;
+	width: 138px;
+	height: 500px;
+	margin: 10px auto;
+	
+	.drink-glass {
+		z-index: 600;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		max-width: 138px;
+		max-height: 500px;
+		
+		background: url('#{$layout-path}/glasses/bottle-overlay.png') no-repeat center bottom;
+		background-size: 100%;
+	}
+	
+	.glass-overlay {
+		display: none;
+	}
+	
+	.tasty-beverage {
+		z-index: 200;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		max-height: 486px;
+	}
+	
+	.beverage-head {
+		display: none;
+	}
+}
+
+.alcopop-bottle {
+	.drink-glass {
+		background: url('#{$layout-path}/glasses/alcopop-overlay.png') no-repeat center bottom;
+	}
+}
+
+
+/* Hiball */
+	 
+.hiball {
+	position: relative;
+	width: 228px;
+	height: 500px;
+	margin: 10px auto;
+	
+	.drink-glass {
+		z-index: 600;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		max-width: 228px;
+		max-height: 500px;
+		background: url('#{$layout-path}/glasses/hiball-overlay.png') no-repeat center bottom;
+		background-size: 100%;
+	}
+	
+	.glass-overlay {
+		display: none;
+	}
+	
+	.tasty-beverage {
+		z-index: 200;
+		position: absolute;
+		bottom: 0;
+		width: 100%;
+		max-height: 485px;
+	}
+	
+	.beverage-head {
+		display: none;
+	}
+}
+
+
+//
+// DRINK TYPES
+//
+	 
+// Lager
+
+.drink-lager {
+	.tasty-beverage {
+		background: #c48135;
+		background: -moz-linear-gradient(left, #c48135 0%, #c69b45 100%);
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#c48135), color-stop(100%,#c69b45));
+		background: -webkit-linear-gradient(left,	 #c48135 0%,#c69b45 100%);
+		background: -o-linear-gradient(left,	#c48135 0%,#c69b45 100%);
+		background: -ms-linear-gradient(left,	 #c48135 0%,#c69b45 100%);
+		background: linear-gradient(to right,	 #c48135 0%,#c69b45 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c48135', endColorstr='#c69b45',GradientType=1 );
+	}
+	
+	.beverage-head {
+		background: #f2f2f2;
+	}
+}
+
+
+// Light Lager
+.drink-lager-light {
+	.tasty-beverage {
+		background: #ebbe32;
+	}
+	
+	.bubble {
+		border-color: rgba(255,255,255,0.25);
+		background: rgba(255,255,255,0.15);
+	}
+}
+
+
+// Ale
+
+.drink-ale {
+	.tasty-beverage {
+		background: #71200b;
+		background: -moz-linear-gradient(left, #71200b 0%, #77380b 100%);
+		background: -webkit-gradient(linear, left top, right top, color-stop(0%,#71200b), color-stop(100%,#77380b));
+		background: -webkit-linear-gradient(left,	 #71200b 0%,#77380b 100%);
+		background: -o-linear-gradient(left,	#71200b 0%,#77380b 100%);
+		background: -ms-linear-gradient(left,	 #71200b 0%,#77380b 100%);
+		background: linear-gradient(to right,	 #71200b 0%,#77380b 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#71200b', endColorstr='#77380b',GradientType=1 );
+	}
+	
+	.beverage-head {
+		height: 5%;
+		background: #f3ebe1;
+	}
+}
+
+
+// Stout (Guinness)
+
+.drink-stout {
+	.tasty-beverage {
+		background: #605a4f;
+		background: -moz-linear-gradient(top,	 #605a4f 0%, #231905 33%, #231905 100%);
+		background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#605a4f), color-stop(33%,#231905), color-stop(100%,#231905));
+		background: -webkit-linear-gradient(top,	#605a4f 0%,#231905 33%,#231905 100%);
+		background: -o-linear-gradient(top, #605a4f 0%,#231905 33%,#231905 100%);
+		background: -ms-linear-gradient(top,	#605a4f 0%,#231905 33%,#231905 100%);
+		background: linear-gradient(to bottom, #605a4f 0%,#231905 33%,#231905 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#605a4f', endColorstr='#231905',GradientType=0 );
+	}
+	
+	.beverage-head {
+		background: #eee3da;
+	}
+}
+
+
+// Gin & Tonic
+
+.drink-gintonic {
+	.tasty-beverage {
+		background: #e9eff5;
+	}
+	
+	.bubble {
+		border-color: rgba(0,0,0,0.15);
+		background: rgba(0,0,0,0.05);
+	}
+}
+
+
+// Cola
+
+.drink-cola {
+	.tasty-beverage {
+		background: #180802;
+	}
+}
+
+
+// Blue Alcopop
+.drink-blue-alcopop {
+	.tasty-beverage {
+		background: #389eed;
+	}
+	
+	.bubble {
+		border-color: rgba(255,255,255,0.25);
+		background: rgba(255,255,255,0.15);
+	}
+}
+
+
+// Ice & Slice
+.drink-gintonic,
+.drink-cola {
+	.beverage-head {
+		z-index: 250;
+		display: block;
+		position: absolute;
+		top: -32px;
+		width: 227px;
+		height: 163px;
+		background: url('#{$layout-path}/ice-lime.png');
+		
+		-webkit-animation: icefloat 3s infinite ease-in-out;
+		   -moz-animation: icefloat 3s infinite ease-in-out;
+		    -ms-animation: icefloat 3s infinite ease-in-out;
+		        animation: icefloat 3s infinite ease-in-out;
+	}
+}
+
+.drink-gintonic .beverage-head {
+	opacity: 0.75;
+}
+
+.drink-cola .beverage-head {
+	opacity: 0.2;
+}
