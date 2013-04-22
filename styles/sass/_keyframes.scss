@@ -14,61 +14,7 @@
 
 // Bubbles
 
-@-webkit-keyframes bubblerise {
-	0% {
-		opacity: 0;
-		bottom: 20px;
-	}
-	5% {
-		opacity: 1;
-		bottom: 20px;
-	}
-	99% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		bottom: 100%;
-	}
-}
-
-@-moz-keyframes bubblerise {
-	0% {
-		opacity: 0;
-		bottom: 20px;
-	}
-	5% {
-		opacity: 1;
-		bottom: 20px;
-	}
-	99% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		bottom: 100%;
-	}
-}
-
-@-ms-keyframes bubblerise {
-	0% {
-		opacity: 0;
-		bottom: 20px;
-	}
-	5% {
-		opacity: 1;
-		bottom: 20px;
-	}
-	99% {
-		opacity: 1;
-	}
-	100% {
-		opacity: 0;
-		bottom: 100%;
-	}
-}
-
-@keyframes bubblerise {
+@include keyframes(bubblerise) {
 	0% {
 		opacity: 0;
 		bottom: 20px;
@@ -87,34 +33,7 @@
 }
 
 
-@-webkit-keyframes bubblewobble {
-	0% {
-		margin-left: 0;
-	}
-	50% {
-		margin-left: 2px;
-	}
-}
-
-@-moz-keyframes bubblewobble {
-	0% {
-		margin-left: 0;
-	}
-	50% {
-		margin-left: 2px;
-	}
-}
-
-@-ms-keyframes bubblewobble {
-	0% {
-		margin-left: 0;
-	}
-	50% {
-		margin-left: 2px;
-	}
-}
-
-@keyframes bubblewobble {
+@include keyframes(bubblewobble) {
 	0% {
 		margin-left: 0;
 	}
@@ -126,32 +45,7 @@
 
 // Floating Ice
 
-@-webkit-keyframes icefloat {
-	0% {
-		margin-top: 0;
-	}
-	50% {
-		margin-top: 3px;
-	}
-}
-
-@-moz-keyframes icefloat {
-	0% {
-		margin-top: 0;
-	}
-	50% {
-		margin-top: 3px;
-	}
-}
-@-ms-keyframes icefloat {
-	0% {
-		margin-top: 0;
-	}
-	50% {
-		margin-top: 3px;
-	}
-}
-@keyframes icefloat {
+@include keyframes(icefloat) {
 	0% {
 		margin-top: 0;
 	}
@@ -163,91 +57,7 @@
 
 // Beer O'clock Alert
 
-@-webkit-keyframes alertflash {
-	0% {
-		background: #900;
-		color: #fff;
-		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
-	}
-	20% {
-		background: #900;
-		color: #fff;
-		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
-	}
-	45% {
-		background: transparent;
-		color: #900;
-		text-shadow: 0 2px 0 rgba(255, 255, 255, .5);
-	}
-	55% {
-		background: transparent;
-		color: #900;
-		text-shadow: 0 2px 0 rgba(255, 255, 255, .5);
-	}
-	80% {
-		background: #900;
-		color: #fff;
-		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
-	}
-}
-
-@-moz-keyframes alertflash {
-	0% {
-		background: #900;
-		color: #fff;
-		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
-	}
-	20% {
-		background: #900;
-		color: #fff;
-		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
-	}
-	45% {
-		background: transparent;
-		color: #900;
-		text-shadow: 0 2px 0 rgba(255, 255, 255, .5);
-	}
-	55% {
-		background: transparent;
-		color: #900;
-		text-shadow: 0 2px 0 rgba(255, 255, 255, .5);
-	}
-	80% {
-		background: #900;
-		color: #fff;
-		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
-	}
-}
-
-@-ms-keyframes alertflash {
-	0% {
-		background: #900;
-		color: #fff;
-		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
-	}
-	20% {
-		background: #900;
-		color: #fff;
-		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
-	}
-	45% {
-		background: transparent;
-		color: #900;
-		text-shadow: 0 2px 0 rgba(255, 255, 255, .5);
-	}
-	55% {
-		background: transparent;
-		color: #900;
-		text-shadow: 0 2px 0 rgba(255, 255, 255, .5);
-	}
-	80% {
-		background: #900;
-		color: #fff;
-		text-shadow: 0 2px 0 rgba(0, 0, 0, .5);
-	}
-}
-
-@keyframes alertflash {
+@include keyframes(alertflash) {
 	0% {
 		background: #900;
 		color: #fff;

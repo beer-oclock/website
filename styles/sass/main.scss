@@ -178,6 +178,7 @@ body {
 	}
 	
 	@media screen and (max-width: $tablet) {
+		overflow: auto;
 		position: relative;
 		top: auto;
 		left: auto;
@@ -194,9 +195,9 @@ body {
 .countdown-segment {
 	position: relative;
 	float: left;
-	width: 23%;
+	width: 31%;
 	height: 100%;
-	margin-right: 2%;
+	margin: 0 1%;
 }
 
 .countdown-days {
