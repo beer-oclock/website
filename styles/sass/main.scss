@@ -7,9 +7,10 @@
  */
 
 
-// Include Base
+// Include Base Config + Compass Modules
 
 @import "_base";
+@import "compass/css3";
 
 
 // Page Setup
@@ -237,9 +238,7 @@ body {
 	text-align: center;
 	text-shadow: 0 2px 0 rgba(0,0,0,0.5);
 	
-	-webkit-border-radius: 5px;
-	   -moz-border-radius: 5px;
-	        border-radius: 5px;
+	@include border-radius(5px);
 }
 
 
@@ -254,19 +253,14 @@ body {
 	right: 2%;
 	display: none;
 	
-	-webkit-animation: alertflash 2s infinite;
-	   -moz-animation: alertflash 2s infinite;
-	    -ms-animation: alertflash 2s infinite;
-	        animation: alertflash 2s infinite;
+	@include animate(alertflash, 2s, infinite, linear);
 	
 	@media screen and (max-width: $tablet) {
 		position: relative;
 		right: auto;
 		margin: 20px auto;
 		
-		-webkit-border-radius: 0;
-		   -moz-border-radius: 0;
-		        border-radius: 0;
+		@include border-radius(0);
 	}
 }
 
@@ -457,9 +451,7 @@ body {
 	border: 1px solid #fff;
 	color: #333;
 	
-	-moz-border-radius: 20px;
-	-webkit-border-radius: 20px;
-	border-radius: 20px;
+	@include border-radius(20px);
 	
 	text-shadow: none;
 }
@@ -484,10 +476,7 @@ body {
 	position: absolute;
 	bottom: 10px;
 	
-	-webkit-animation: bubblerise 4s infinite ease-in;
-	   -moz-animation: bubblerise 4s infinite ease-in;
-	    -ms-animation: bubblerise 4s infinite ease-in;
-	        animation: bubblerise 4s infinite ease-in;
+	@include animate(bubblerise, 4s, infinite, ease-in);
 }
 
 .bubble-container:active .bubble {
@@ -503,14 +492,8 @@ body {
 	border: 1px solid rgba(255,255,255,0.15);
 	background: rgba(255,255,255,0.05);
 	
-	-webkit-border-radius: 10px;
-	   -moz-border-radius: 10px;
-	        border-radius: 10px;
-	
-	-webkit-animation: bubblewobble 0.4s infinite linear;
-	   -moz-animation: bubblewobble 0.4s infinite linear;
-	    -ms-animation: bubblewobble 0.4s infinite linear;
-	        animation: bubblewobble 0.4s infinite linear;
+	@include border-radius(10px);
+	@include animate(bubblewobble, 0.4s, infinite, linear);
 }
 
 
