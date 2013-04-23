@@ -46,6 +46,16 @@ $handheld-wide: 769px;
 }
 
 
+// Animation Mixin
+
+@mixin animate($animation, $duration, $repeat, $easing) {
+	-webkit-animation: $animation $duration $repeat $easing;
+	   -moz-animation: $animation $duration $repeat $easing;
+	    -ms-animation: $animation $duration $repeat $easing;
+	        animation: $animation $duration $repeat $easing;
+}
+
+
 // Keyframes Mixin
 // https://gist.github.com/ericam/1607696
 
