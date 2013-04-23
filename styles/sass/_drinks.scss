@@ -266,10 +266,7 @@
 		height: 163px;
 		background: url('#{$layout-path}/ice-lime.png');
 		
-		-webkit-animation: icefloat 3s infinite ease-in-out;
-		   -moz-animation: icefloat 3s infinite ease-in-out;
-		    -ms-animation: icefloat 3s infinite ease-in-out;
-		        animation: icefloat 3s infinite ease-in-out;
+		@include animate(icefloat, 3s, infinite, ease-in-out);
 	}
 }
 
