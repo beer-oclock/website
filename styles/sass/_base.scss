@@ -46,18 +46,6 @@ $handheld-wide: 769px;
 }
 
 
-// Transition Mixin
-// Compass does this weirdly - easier to roll our own
-
-@mixin transition($property, $duration, $easing) {
-	-webkit-transform: $property $duration $easing;
-	  -moz-transition: $property $duration $easing;
-       -ms-transition: $property $duration $easing;
-        -o-transition: $property $duration $easing;
-           transition: $property $duration $easing;
-}
-
-
 // Animation Mixin
 
 @mixin animate($animation, $duration, $repeat, $easing) {
