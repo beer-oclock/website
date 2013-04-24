@@ -23,11 +23,11 @@ html {
 
 html,
 body {
+	position: relative;
 	height: 100%;
 	-webkit-font-smoothing: antialiased;
 	
 	@media screen and (max-width: $tablet) {
-		position: relative;
 		height: auto;
 	}
 }
@@ -169,12 +169,8 @@ body {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-		
-	-webkit-transition: height 2.5s ease-in-out;
-       -moz-transition: height 2.5s ease-in-out;
-        -ms-transition: height 2.5s ease-in-out;
-         -o-transition: height 2.5s ease-in-out;
-            transition: height 2.5s ease-in-out;
+	
+	@include transition(height 2.5s ease-in-out);
 }
 
 
@@ -307,11 +303,7 @@ body {
 .site-footer a {
 	color: #fff;
 	
-	-webkit-transition: color 0.2s ease-in-out;
-	   -moz-transition: color 0.2s ease-in-out;
-	    -ms-transition: color 0.2s ease-in-out;
-	     -o-transition: color 0.2s ease-in-out;
-	        transition: color 0.2s ease-in-out;
+	@include transition(color 0.2s ease-in-out);
 }
 
 .site-footer a {
