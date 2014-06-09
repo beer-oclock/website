@@ -2,7 +2,7 @@
 # Simple rake task to compile Sass and Uflify JS
 #
 
-require 'compass/exec'
+require 'compass'
 require 'uglifier'
 
 task :build do
