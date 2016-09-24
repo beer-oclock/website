@@ -67,6 +67,7 @@ body {
 	position: absolute;
 	top: 0;
 	right: 0;
+	z-index: 999;
 
 	@media screen and (max-width: $tablet) {
 		display: none;
