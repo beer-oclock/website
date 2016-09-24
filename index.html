@@ -32,7 +32,7 @@
 		.script(function() {
 			return typeof IE == 'undefined' ? "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" : "//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js";
 		})
-		
+
 		// Main
 		.wait().script("js/main.js?9")
 
@@ -43,7 +43,7 @@
 
 		// GoSquared
 		.script("//d1l6p2sc9645hc.cloudfront.net/tracker.js")
-		
+
 		// Google Analytics
 		.script("http://www.google-analytics.com/ga.js")
 	</script>
@@ -57,12 +57,12 @@
 	<!--[if lt IE 9]>
 		<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 	<![endif]-->
-	
+
 	<meta http-equiv="imagetoolbar" content="false" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<meta name="description" content="A handy tool to answer the most important question of the day... How long until Beer O'Clock?" />
 	<title>Beer O'clock</title>
-	
+
 	<!-- OpenGraph -->
 	<meta property="og:title" content="Beer O'clock" />
 	<meta property="og:type" content="website" />
@@ -72,12 +72,12 @@
 	<meta property="og:description" content="A handy tool to answer the most important question of the day... How long until Beer O'Clock?" />
 	<meta property="fb:admins" content="899385393" />
 	<meta property="fb:admins" content="686933245" />
-	
+
 	<!-- Google+ -->
 	<meta itemprop="name" content="Beer O'clock">
 	<meta itemprop="description" content="A handy tool to answer the most important question of the day... How long until Beer O'Clock?">
 	<meta itemprop="image" content="http://beeroclock.in/img/og-logo.jpg">
-	
+
 	<!-- Bookmark Icons -->
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -86,10 +86,8 @@
 </head>
 
 <body>
-	
 	<div class="site-container">
 		<div class="main-content">
-			
 			<header class="site-header" role="banner">
 				<h1>Beer<br/>O'clock</h1>
 				<p>How long until the most important time of day?</p>
@@ -105,7 +103,7 @@
 					</div>
 				</div>
 			</header>
-		
+
 			<div class="drink-container" role="presentation">
 				<div id="drink-type">
 					<div class="drink-glass">
@@ -119,7 +117,7 @@
 					</div>
 				</div>
 			</div>
-			
+
 			<section class="countdown-timer" role="main">
 				<h2>Time until Beer O'clock</h2>
 				<div class="countdown-container">
@@ -143,15 +141,15 @@
 						<div class="digit">0</div>
 					</div>
 				</div>
-				
+
 				<div class="beer-oclock-notification">
 					It's Beer O'clock!
 				</div>
 			</section>
-			
+
 		</div>
 	</div>
-	
+
 	<footer class="site-footer" role="contentinfo">
 		<div class="site-options">
 			<a href="javascript:void(0);" class="site-customise bubble-toggle" title="Toggle Bubble Animation - You may want to disable bubbles on slow computers, or if your laptop fans start to sound like a fighter jet.">Turn Bubbles Off</a>
@@ -159,7 +157,7 @@
 		</div>
 		<small class="site-credits">Brewed by <a href="http://jamesrwhite.co.uk">James White</a> &amp; <a href="http://benhodgson.net">Ben Hodgson</a></small>
 	</footer>
-	
+
 	<section class="settings-panel">
 		<form id="settings-form" class="settings-inner">
 			<h2>Customise Beer O'clock</h2>
@@ -177,39 +175,7 @@
 					</select>
 				</fieldset>
 			</div>
-			<!--<div class="settings-segment day-selector">
-				<h3>On these days&hellip;</h3>
-				<fieldset class="week-list">
-					<div class="checkbox">
-						<label for="checkbox-mon">Mon</label>
-						<input type="checkbox" name="day_mon" id="checkbox-mon" class="regular-checkbox" value="1" />
-					</div>
-					<div class="checkbox">
-						<label for="checkbox-tue">Tue</label>
-						<input type="checkbox" name="day_tue" id="checkbox-tue" class="regular-checkbox" value="1" />
-					</div>
-					<div class="checkbox">
-						<label for="checkbox-wed">Wed</label>
-						<input type="checkbox" name="day_wed" id="checkbox-wed" class="regular-checkbox" value="1" />
-					</div>
-					<div class="checkbox">
-						<label for="checkbox-thu">Thu</label>
-						<input type="checkbox" name="day_thu" id="checkbox-thu" class="regular-checkbox" value="1" />
-					</div>
-					<div class="checkbox">
-						<label for="checkbox-fri">Fri</label>
-						<input type="checkbox" name="day_fri" id="checkbox-fri" class="regular-checkbox" value="1" />
-					</div>
-					<div class="checkbox">
-						<label for="checkbox-sat">Sat</label>
-						<input type="checkbox" name="day_sat" id="checkbox-sat" class="regular-checkbox" value="1" />
-					</div>
-					<div class="checkbox">
-						<label for="checkbox-sun">Sun</label>
-						<input type="checkbox" name="day_sun" id="checkbox-sun" class="regular-checkbox" value="1" />
-					</div>
-				</fieldset>
-			</div>-->
+
 			<div class="settings-segment time-selector">
 				<h3>At this time&hellip;</h3>
 				<div class="select-box hour-options">
@@ -239,26 +205,17 @@
 						<option value="23">11 PM</option>
 					</select>
 				</div>
-				<!--<div class="select-box minute-options">
-					<select name="start_min">
-						<option value="00">00</option>
-						<option value="15">15</option>
-						<option value="30">30</option>
-						<option value="45">45</option>
-					</select>
-				</div>-->
 			</div>
 			<div class="settings-options">
 				<a href="javascript:void(0);" class="settings-cancel settings-toggle">Close</a>
 			</div>
 		</form>
 	</section>
-	
+
 	<a class="github-banner" href="https://github.com/jamesrwhite/beeroclock">
 		<img src="img/forkme.png" alt="Fork me on GitHub">
 	</a>
-	
-	<div id="fb-root"></div>
 
+	<div id="fb-root"></div>
 </body>
 </html>

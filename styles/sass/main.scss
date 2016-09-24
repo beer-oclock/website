@@ -1,4 +1,4 @@
-/* 
+/*
  * Beer O'Clock
  * @jamesrwhite
  * @benhodgson
@@ -26,7 +26,7 @@ body {
 	position: relative;
 	height: 100%;
 	-webkit-font-smoothing: antialiased;
-	
+
 	@media screen and (max-width: $tablet) {
 		height: auto;
 	}
@@ -45,7 +45,7 @@ body {
 .site-container {
 	width: 100%;
 	min-height: 100%;
-	
+
 	@media screen and (max-width: $tablet) {
 		min-height: auto;
 	}
@@ -54,7 +54,7 @@ body {
 .main-content {
 	overflow: auto;
 	padding-bottom: 35px;
-	
+
 	@media screen and (max-width: $tablet) {
 		padding: 0;
 	}
@@ -67,7 +67,7 @@ body {
 	position: absolute;
 	top: 0;
 	right: 0;
-	
+
 	@media screen and (max-width: $tablet) {
 		display: none;
 	}
@@ -84,7 +84,7 @@ body {
 	width: 33%;
 	height: 210px;
 	margin: -122px 3% 75px 2%;  /* Minus half height of div + half height of footer */
-	
+
 	h1 {
 		margin-bottom: 10px;
 		font-family: $heading-font;
@@ -93,13 +93,13 @@ body {
 		line-height: 62px;
 		text-shadow: 0 1px 0 rgba(255,255,255,0.75);
 	}
-	
+
 	p {
 		font-size: 16px;
 		color: #666;
 		text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 	}
-	
+
 	@media screen and (max-width: $tablet) {
 		position: relative;
 		top: auto;
@@ -113,7 +113,7 @@ body {
 .social-sharing {
 	display: none;
 	margin-top: 20px;
-	
+
 	@media screen and (max-width: $tablet) {
 		width: 300px;
 		margin: 20px auto;
@@ -139,7 +139,7 @@ body {
 	top: 50%;
 	width: 100%;
 	margin-top: -280px;
-	
+
 	@media screen and (max-width: $tablet) {
 		display: block;
 		position: relative;
@@ -169,7 +169,7 @@ body {
 	position: absolute;
 	bottom: 0;
 	width: 100%;
-	
+
 	@include transition(height 2.5s ease-in-out);
 }
 
@@ -189,7 +189,7 @@ body {
 	h2 {
 		@include hide-text();
 	}
-	
+
 	@media screen and (max-width: $tablet) {
 		overflow: auto;
 		position: relative;
@@ -203,7 +203,7 @@ body {
 .countdown-container {
 	height: 100%;
 	display: none; // Hidden by default so the JS can decide
-	
+
 	@media screen and (min-width: $tablet) {
 		margin-right: 5%;
 	}
@@ -219,7 +219,7 @@ body {
 
 .countdown-days {
 	width: 11.5%;
-	
+
 	.digit {
 		width: 98%;
 	}
@@ -249,7 +249,7 @@ body {
 	font-weight: bold;
 	text-align: center;
 	text-shadow: 0 2px 0 rgba(0,0,0,0.5);
-	
+
 	@include border-radius(5px);
 }
 
@@ -264,14 +264,14 @@ body {
 	position: absolute;
 	right: 2%;
 	display: none;
-	
+
 	@include animate(alertflash, 2s, infinite, linear);
-	
+
 	@media screen and (max-width: $tablet) {
 		position: relative;
 		right: auto;
 		margin: 20px auto;
-		
+
 		@include border-radius(0);
 	}
 }
@@ -289,11 +289,11 @@ body {
 	background: #333 url('#{$layout-path}/footer-bg.png');
 	font-size: 13px;
 	text-shadow: 0 1px 0 rgba(0,0,0,0.25);
-	
+
 	@media screen and (max-width: $tablet) {
 		margin-top: 0;
 	}
-	
+
 	@media screen and (max-width: $handheld-wide) {
 		height: auto;
 	}
@@ -302,13 +302,13 @@ body {
 .site-footer,
 .site-footer a {
 	color: #fff;
-	
+
 	@include transition(color 0.2s ease-in-out);
 }
 
 .site-footer a {
 	font-weight: bold;
-  
+
 	&:hover {
 		color: #fc0;
 	}
@@ -317,16 +317,16 @@ body {
 .site-credits {
 	float: left;
 	font-size: inherit;
-	
+
 	@media screen and (max-width: $handheld-wide) {
 		float: none;
 	}
 }
-    
+
 .site-options {
 	float: right;
 	text-align: right;
-	
+
 	@media screen and (max-width: $handheld-wide) {
 		float: none;
 		margin: 0 0 10px 0;
@@ -336,7 +336,7 @@ body {
 
 .site-customise {
 	margin-left: 10px;
-	
+
 	@media screen and (max-width: $handheld-wide) {
 		margin-left: 0;
 		margin-right: 10px;
@@ -355,23 +355,23 @@ body {
 	background: #333 url('#{$layout-path}/footer-bg.png');
 	color: #fff;
 	text-shadow: 0 1px 0 #000;
-	
+
 	h2 {
 		padding: 0 4%;
 		margin-bottom: 5px;
 		color: #fc0;
 		font-family: $heading-font;
-		
+
 		@media screen and (max-width: $handheld-wide) {
 			padding: 0 2.5%;
 		}
 	}
-	
+
 	.checkbox {
 		float: left;
 		margin: 5px 20px 5px 0;
 	}
-	
+
 	@media screen and (max-width: $handheld-wide) {
 		padding-bottom: 35px;
 	}
@@ -386,7 +386,7 @@ body {
 	position: absolute;
 	top: 20px;
 	right: 4%;
-	
+
 	@media screen and (max-width: $handheld-wide) {
 		top: auto;
 		bottom: 0;
@@ -399,11 +399,11 @@ body {
 	float: left;
 	width: 25%;
 	padding: 10px 4%;
-	
+
 	h3 {
 		margin-bottom: 10px;
 	}
-	
+
 	@media screen and (max-width: $handheld-wide) {
 		width: 95%;
 		padding: 10px 2.5%;
@@ -412,7 +412,7 @@ body {
 
 .drink-options {
 	position: relative;
-	
+
 	select {
 		width: 100% !important;
 		height: 100% !important;
@@ -440,7 +440,7 @@ body {
 	color: #fff;
 	font-weight: bold;
 	text-decoration: none;
-	
+
 	@media screen and (max-width: $handheld-wide) {
 		padding: 5px;
 		background: #fc0;
@@ -458,9 +458,9 @@ body {
 	padding: 5px 0;
 	border: 1px solid #fff;
 	color: #333;
-	
+
 	@include border-radius(20px);
-	
+
 	text-shadow: none;
 }
 .customSelectInner {
@@ -483,7 +483,7 @@ body {
 	opacity: 0;
 	position: absolute;
 	bottom: 10px;
-	
+
 	@include animate(bubblerise, 4s, infinite, ease-in);
 }
 
@@ -499,7 +499,7 @@ body {
 	margin: 0 auto;
 	border: 1px solid rgba(255,255,255,0.15);
 	background: rgba(255,255,255,0.05);
-	
+
 	@include border-radius(10px);
 	@include animate(bubblewobble, 0.4s, infinite, linear);
 }

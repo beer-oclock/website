@@ -1,15 +1,35 @@
-Beer O'clock
-==========
+# Beer O'clock
 
-[beeroclock.in](http://beeroclock.in)
+[beeroclock.in](https://beeroclock.in)
 
 From [@jamesrwhite](https://twitter.com/jamesrwhite) and [@benhodgson](https://twitter.com/benhodgson)
 
 
-Setup
-------
+## Build
+
 ````
 bundle install && rake build
 ````
 
-If you have Ruby installed running the above command will install the required dependencies and compile the JS/CSS assets. This isn't required though, you could also use GUI tools like Codekit etc.
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2013 James White
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of
+the Software, and to permit persons to whom the Software is furnished to do so,
+subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS
+FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR
+COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
+CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

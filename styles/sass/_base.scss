@@ -1,4 +1,4 @@
-/* 
+/*
  * Beer O'Clock
  * @jamesrwhite
  * @benhodgson
@@ -61,7 +61,7 @@ $handheld-wide: 769px;
 
 @mixin keyframes($name) {
 	@-webkit-keyframes #{$name} {
-		@content; 
+		@content;
 	}
 	@-moz-keyframes #{$name} {
 		@content;
@@ -71,5 +71,5 @@ $handheld-wide: 769px;
 	}
 	@keyframes #{$name} {
 		@content;
-	} 
+	}
 }
