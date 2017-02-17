@@ -23,20 +23,18 @@
 		$LAB
 
 		// jQuery
-		.script(function() {
-			return typeof IE == 'undefined' ? "//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js" : "//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js";
-		})
+		.script('https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
 
 		// Main
-		.wait().script("js/main.js")
+		.wait().script('js/main.js')
 
 		// Typekit
-		.script("//use.typekit.net/kdh0ouh.js").wait(function() {
+		.script('//use.typekit.net/kdh0ouh.js').wait(function() {
 			try{Typekit.load();}catch(e){}
 		})
 
 		// Google Analytics
-		.script("//www.google-analytics.com/ga.js")
+		.script('//www.google-analytics.com/ga.js')
 	</script>
 
 	<meta http-equiv="imagetoolbar" content="false" />
@@ -54,11 +52,6 @@
 	<meta property="fb:admins" content="899385393" />
 	<meta property="fb:admins" content="686933245" />
 
-	<!-- Google+ -->
-	<meta itemprop="name" content="Beer O'clock">
-	<meta itemprop="description" content="A handy tool to answer the most important question of the day... How long until Beer O'Clock?">
-	<meta itemprop="image" content="https://beeroclock.in/img/og-logo.jpg">
-
 	<!-- Bookmark Icons -->
 	<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -74,13 +67,11 @@
 				<p>How long until the most important time of day?</p>
 				<div class="social-sharing">
 					<div class="share-button facebook-share">
-						<div class="fb-like" data-href="https://beeroclock.in" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+						<div class="fb-like" data-href="https://beeroclock.in" data-layout="standard" data-width="450" data-show-faces="false"></div>
 					</div>
+
 					<div class="share-button twitter-share">
 						<a href="https://twitter.com/share" class="twitter-share-button" data-url="https://beeroclock.in" data-text="How long is it until Beer O'clock?" data-related="benhodgson,jamesrwhite" data-hashtags="beeroclock">Tweet</a>
-					</div>
-					<div class="share-button google-share">
-						<div class="g-plusone" data-size="medium"></div>
 					</div>
 				</div>
 			</header>
@@ -193,6 +184,17 @@
 		</form>
 	</section>
 
+	<!-- Load Facebook SDK for JavaScript -->
 	<div id="fb-root"></div>
+	<script>
+		(function(d, s, id) {
+			var js, fjs = d.getElementsByTagName(s)[0];
+			if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = '//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8';
+			fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));
+	</script>
+	<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
