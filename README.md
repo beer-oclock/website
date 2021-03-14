@@ -4,12 +4,17 @@
 
 From [@jamesrwhite](https://twitter.com/jamesrwhite) and [@benhodgson](https://twitter.com/benhodgson)
 
+## Setup
+
+    $ make setup
 
 ## Build
 
-````
-bundle install && rake build
-````
+    $ make build
+
+## Run Locally
+
+    $ make serve
 
 ## License
 
