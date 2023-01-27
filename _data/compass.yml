@@ -1,0 +1,11 @@
+---
+require:
+- jekyll-compass
+
+http_path: "/"
+css_dir: styles/css
+sass_dir: styles/sass
+images_dir: img
+output_style: compressed
+relative_assets: true
+line_comments: false
