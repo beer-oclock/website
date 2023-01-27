@@ -1,4 +1,5 @@
 source: src
 destination: dist
+exclude: [styles/sass]
 plugins:
   - jekyll-compass
