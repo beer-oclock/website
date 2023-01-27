@@ -1,2 +1,4 @@
+source: src
+destination: dist
 plugins:
   - jekyll-compass

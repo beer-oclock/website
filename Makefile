@@ -12,4 +12,4 @@ serve:
 
 deploy:
 	@npm i --no-audit --no-fund
-	@npx wrangler pages publish --project-name beeroclock _site
+	@npx wrangler pages publish --project-name beeroclock dist
