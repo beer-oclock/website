@@ -14,27 +14,12 @@
 
 	<!-- Load all the JavaScripts! -->
 	<script>
-		// GA Config
-		var _gaq = _gaq || [];
-		_gaq.push(['_setAccount', 'UA-38568189-1']);
-		_gaq.push(['_trackPageview']);
-
-		// Start Async script loading
 		$LAB
-
-		// jQuery
 		.script('https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js')
-
-		// Main
 		.wait().script('js/main.js')
-
-		// Typekit
 		.script('//use.typekit.net/kdh0ouh.js').wait(function() {
 			try{Typekit.load();}catch(e){}
 		})
-
-		// Google Analytics
-		.script('//www.google-analytics.com/ga.js')
 	</script>
 
 	<meta http-equiv="imagetoolbar" content="false" />
