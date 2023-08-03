@@ -1,6 +1,6 @@
 {
   "name": "beeroclock",
   "dependencies": {
-    "wrangler": "^2.8.1"
+    "wrangler": "^3.1.1"
   }
 }
